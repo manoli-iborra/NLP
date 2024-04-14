@@ -9,19 +9,21 @@
       
       
       
-      <link rel="icon" href="/NLP/imagenes/favicon.png">
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p6.html">
+      
+      <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Procesamiento del Lenguaje Natural</title>
+        <title>**TRANSFORMERS** - Procesamiento del Lenguaje Natural</title>
       
     
     
-      <link rel="stylesheet" href="/NLP/assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
       
         
-        <link rel="stylesheet" href="/NLP/assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -65,12 +67,17 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("/NLP/",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#transformers" class="md-skip">
+          Saltar a contenido
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -79,9 +86,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="/NLP/index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
       
-  <img src="/NLP/imagenes/logofp.png" alt="logo">
+  <img src="imagenes/logofp.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -97,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              **TRANSFORMERS**
             
           </span>
         </div>
@@ -162,9 +169,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/NLP/index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
       
-  <img src="/NLP/imagenes/logofp.png" alt="logo">
+  <img src="imagenes/logofp.png" alt="logo">
 
     </a>
     Procesamiento del Lenguaje Natural
@@ -180,7 +187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NLP/index.html" class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         1. Procesamiento del Lenguaje Natural
       </a>
     </li>
@@ -195,7 +202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NLP/p1.html" class="md-nav__link">
+      <a href="p1.html" class="md-nav__link">
         2. Librerías para PLN
       </a>
     </li>
@@ -209,11 +216,105 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-entrenamiento" class="md-nav__link">
+    PRE-ENTRENAMIENTO
+  </a>
+  
+    <nav class="md-nav" aria-label="PRE-ENTRENAMIENTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prediccion-de-la-siguiente-palabra" class="md-nav__link">
+    Predicción de la siguiente palabra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-modelo-de-lenguaje-enmascarado" class="md-nav__link">
+    El modelo de lenguaje enmascarado
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-los-transformers" class="md-nav__link">
+    Introducción a los transformers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                <h1 id="transformers"><strong>TRANSFORMERS</strong><a class="headerlink" href="#transformers" title="Permanent link">&para;</a></h1>
+<p>Es un tipo de arquitectura basada en redes neuronales que procesan secuencias de palabras y tienen memoria a largo plazo, es decir que logran analizar secuencias muy extensas usando un mecanismo que se llama <strong>atención</strong>. Además, procesan toda la secuencia en paralelo (las redes recurrentes lo hacen en serie).</p>
+<p>Las redes transformers están descritas en el artículo del 2017 llamado "Attention is All You Need".</p>
+<h2 id="pre-entrenamiento"><strong>PRE-ENTRENAMIENTO</strong><a class="headerlink" href="#pre-entrenamiento" title="Permanent link">&para;</a></h2>
+<p>El pre-entrenamiento gnerativo proporciona al modelo un conjunto de datos formador por tokens y los entrena para predecir los tokens que contiene.</p>
+<p>Hay dos formas de pre-entrenamiento:</p>
+<ul>
+<li>Predicción de la siguiente palabra.</li>
+<li>El modelo de lenguaje enmascarado.</li>
+</ul>
+<h3 id="prediccion-de-la-siguiente-palabra"><strong>Predicción de la siguiente palabra</strong><a class="headerlink" href="#prediccion-de-la-siguiente-palabra" title="Permanent link">&para;</a></h3>
+<p>Es una técnica de aprendizaje supervisado que entrena el modelo con los datos de entrada y su correspondiente salida. Permite entrenar el modelo para predecir la siguiente palabra en una oración dado el contexto de las palabras anteriores.</p>
+<p>El modelo aprende a generar texto coherente conociendo las dependencias entre palabras en un contexto más ámplio. Cuantos más ejemplos se ven, mejor se predice la siguiente palabra.</p>
+<p><img alt="imagen" src="imagenes/T1.PNG" /></p>
+<h3 id="el-modelo-de-lenguaje-enmascarado"><strong>El modelo de lenguaje enmascarado</strong><a class="headerlink" href="#el-modelo-de-lenguaje-enmascarado" title="Permanent link">&para;</a></h3>
+<p>El modelo de lenguaje enmascarado entrena un modelo para predecir una palabra que está oculta en una oración.</p>
+<p>Durante el entrenamiento, el modelo recibe como entrada tanto el texto original como el enmascarado.</p>
+<p><img alt="imagen" src="imagenes/T2.PNG" /></p>
+<h2 id="introduccion-a-los-transformers"><strong>Introducción a los transformers</strong><a class="headerlink" href="#introduccion-a-los-transformers" title="Permanent link">&para;</a></h2>
+<p>Los transformers forman parte del pre-entrenamiento y potencian las técnicas que ya conocemos.</p>
+<p>" Attention Is All You Need "</p>
+<p>La arquitectura de los transformers da importancia a las relaciones entre palabras que no están cerca para generar un texto preciso y coherente.</p>
+<p>Los componentes de la arquitectura transformers es la siguiente:</p>
+<ul>
+<li>Preprocesamiento.</li>
+<li>Codificación posicional (Posicional Encoding).</li>
+<li>Codificadores (Encoders).</li>
+<li>Decodificadores (Decoders).</li>
+</ul>
+                
+              
+              
+                
+
 
               
             </article>
@@ -258,10 +359,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/NLP/", "features": ["header.autohide", "navigation.expand"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "/NLP/assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.expand"], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="/NLP/assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
       
     
   </body>

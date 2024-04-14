@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p.html">
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p4.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>**POWER BI** - Procesamiento del Lenguaje Natural</title>
+        <title>**GENERACIÓN DE TEXTO CON MODELOS DE MARKOV** - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#power-bi" class="md-skip">
+        <a href="#generacion-de-texto-con-modelos-de-markov" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              **POWER BI**
+              **GENERACIÓN DE TEXTO CON MODELOS DE MARKOV**
             
           </span>
         </div>
@@ -235,15 +235,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-de-power-bi" class="md-nav__link">
-    Características de Power BI
+  <a href="#modelo-de-markov-de-segundo-orden" class="md-nav__link">
+    Modelo de Markov de segundo orden
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#licencias-de-power-bi" class="md-nav__link">
-    Licencias de Power BI
+  <a href="#l" class="md-nav__link">
+    L
   </a>
   
 </li>
@@ -309,21 +309,15 @@
               
                 
                 
-                <h1 id="power-bi"><strong>POWER BI</strong><a class="headerlink" href="#power-bi" title="Permanent link">&para;</a></h1>
-<p>Microsoft Power BI es la solución destinada a la inteligencia empresarial, que permite unir más de 65 fuentes de datos diferentes, para el modelado y posterior análisis de los datos, así como para presentarlos a través de paneles e informes.</p>
-<h2 id="caracteristicas-de-power-bi"><strong>Características de Power BI</strong><a class="headerlink" href="#caracteristicas-de-power-bi" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Está integrada en el ecosistema de Microsoft, por lo que permite acceder de forma sencilla a elementos almacenados en Sharepoint o Onedrive, así como conectar otras herrammientas del mismo ecosistema a Power BI de una manera muy intutitiva.</li>
-<li>Con los paneles de informes (cuadros de mando o Dashboards) se consigue que los datos puedan ser consultados por los usuarios de una manera muy fácil, atractiva e intuitiva.</li>
-<li>Agilidad en la interpretación de los datos y la interacción de estos entre las diferentes gráficas y tablas representadas.</li>
-<li>Los paneles pueden ser compartidos por muchos usuarios de una misma empresa u organización.</li>
-<li>Se puede disponer de una manera ágil de información sobre sus negocios en tiempo real.</li>
-<li>Seguridad en la visualización de la información ya que se pueden asignar permisos de visualización de los cuadros de mando.</li>
-<li>Tiene un ámplio repertorio de objetos visuales además de los que dispone por defecto en la propia herramienta.
-Gran comunidad de soporte que facilitan la resolución de problemas y dudas que puedan surgir en el camino de aprendizaje.</li>
-<li>Todos los meses se añaden mejoras o se optimizan los recursos de la herramienta.</li>
-</ul>
-<h2 id="licencias-de-power-bi"><strong>Licencias de Power BI</strong><a class="headerlink" href="#licencias-de-power-bi" title="Permanent link">&para;</a></h2>
+                <h1 id="generacion-de-texto-con-modelos-de-markov"><strong>GENERACIÓN DE TEXTO CON MODELOS DE MARKOV</strong><a class="headerlink" href="#generacion-de-texto-con-modelos-de-markov" title="Permanent link">&para;</a></h1>
+<p>Podemos utilizar el modelo de Markov para generar textos, además de para clasificar texto. El método consiste en tener una bolsa de palabras y el modelo va a escoger de toda la bolsa de palabras, la que sea más probable que continúe en una frase dada.</p>
+<p>Contamos con la matriz de transición y el vector de probabilidades. El problema que tiene este modelo es que genera la palabra mirándo únicamente la palabra anterior.</p>
+<p><strong> La niña está jugando con el gato [palabra] </strong></p>
+<p>Si tenemos en cuenta la paabra anterior, es decir gato, seguramente nos devolverá "maúlla" por lo tanto el resultado de la frase será " La niña está jugando con el gato maúlla" que no tiene mucho sentido por lo tanto vamos a tener en cuenta no solo un estado (la palabra anterior) sino dos estados o incluso tres estados (las tres palabras anteriores).</p>
+<h2 id="modelo-de-markov-de-segundo-orden"><strong>Modelo de Markov de segundo orden</strong><a class="headerlink" href="#modelo-de-markov-de-segundo-orden" title="Permanent link">&para;</a></h2>
+<p>Es otra forma de almacenara y representar las probabilidades de transición. En vez de tener una matriz bidimensional, tendríamos una matriz tridimensional. Se tiene en cuenta no solo el estado anterior sino otro estado más.</p>
+<p>También podemos aumentar el número de estados (tercer orden) pero a medida que aumente el número de estados anteriores, el tamaño de la matriz crece de forma exponencial y esto podría llevar a problemas de eficiencia computacional ya que necesita muchos recursos para su implementación y cálculo.</p>
+<h2 id="l"><strong>L</strong><a class="headerlink" href="#l" title="Permanent link">&para;</a></h2>
 <p><img alt="imagen" src="imagenes/versiones.PNG" /></p>
 <p><img alt="imagen" src="imagenes/precios.PNG" /></p>
 <p><img alt="imagen" src="imagenes/tipos.PNG" /></p>
