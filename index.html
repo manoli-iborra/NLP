@@ -455,21 +455,22 @@ Un token es una secuencia de caracteres separados por espacio en blanco. </p>
 
 ### **Bolsa de palabras**
 
-**Bag of Words (BoW)** es un modelo de representación que se basa en la definición de un vector de longitud constante donde se reflejan las ocurrencias de cada uno de los términos existentes a lo largo de las unidades que forma parte del corpus (párrafo, documento, conjunto de documentos).
+**Bag of Words (BoW)** es un modelo de representación que se basa en la definición de un vector de longitud constante donde se reflejan las ocurrencias de cada uno de los términos existentes a lo largo de las unidades que forma parte del corpus (párrafo, documento, conjunto de documentos). Es una técnica de Procesamiento del Lenguaje Natural que busca representar documentos como vectores numéricos.
 
 ![imagen](imagenes/PLN4.PNG)
 
 Es una técnica que surgió en el año 1954. Describe toda la información que hay en cada una de las frases. 
 Se representa mediante una tabla donde se marca el número de veces que una palabra aparece en cada uno de los documentos.
 
-Esta técnica no considera el orden de las palabras aunque es bastante importante. Por ejemplo, no significaría lo mismo "la pelota de Juan " que "la Juan de pelota".
+Esta técnica no considera el orden de las palabras aunque es bastante importante. Por ejemplo, no significaría lo mismo "la casa de María " que "la María de casa".
 
 Se puede utilizar la bolsa de trabajo por ejemplo, para el análisis de sentimientos, donde nos interesaría saber si el sentimiento es positivo o negativo. También se puede utilizar en la detección de spam, ya que solamente tendría que buscar parlabras del tipo: premio, ganador, etc. para saber si ese correo es spam o no. En el caso de CHATGPT, no podríamos utilizarlo ya que sí que es importante el orden que tienen las palabras.
 
 Una de las técnicas que se utilizan en la bolsa de palabras para convertir el texto en vecto es el **conteo de palabras** que consisten en lo siguiente:
 
 1. Determinar el tamaño del vocabulario, es contar las palabras únicas que aparecen en los documentos.
-2. Creamos un vector basado en el tamaño del vocabulario.
+2. Creamos un vector basado en el tamaño del vocabulario. Cada posición representa una palabra en el vocabulario.
+3. Eliminación de las palabras más frecuentes. Se eliminan las stopwords así como palabras comunes a todos los documentos.
 
 ![imagen](imagenes/bow.PNG)
 
