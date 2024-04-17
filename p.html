@@ -16,7 +16,7 @@
     
     
       
-        <title>**POWER BI** - Procesamiento del Lenguaje Natural</title>
+        <title>3. Embedding - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#power-bi" class="md-skip">
+        <a href="#embedding" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              **POWER BI**
+              3. Embedding
             
           </span>
         </div>
@@ -209,6 +209,109 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3. Embedding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p.html" class="md-nav__link md-nav__link--active">
+        3. Embedding
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-de-los-embeddings" class="md-nav__link">
+    Características de los embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-embeddings" class="md-nav__link">
+    Crear embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemas-para-entrenar-embeddings" class="md-nav__link">
+    Problemas para entrenar embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embeddings-entrenados" class="md-nav__link">
+    Embeddings entrenados
+  </a>
+  
+    <nav class="md-nav" aria-label="Embeddings entrenados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bert" class="md-nav__link">
+    BERT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muse" class="md-nav__link">
+    MUSE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpt" class="md-nav__link">
+    GPT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -235,58 +338,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-de-power-bi" class="md-nav__link">
-    Características de Power BI
+  <a href="#caracteristicas-de-los-embeddings" class="md-nav__link">
+    Características de los embeddings
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#licencias-de-power-bi" class="md-nav__link">
-    Licencias de Power BI
+  <a href="#crear-embeddings" class="md-nav__link">
+    Crear embeddings
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fases-para-la-generacion-de-dashboards" class="md-nav__link">
-    Fases para la generación de Dashboards
+  <a href="#problemas-para-entrenar-embeddings" class="md-nav__link">
+    Problemas para entrenar embeddings
   </a>
   
-    <nav class="md-nav" aria-label="Fases para la generación de Dashboards">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embeddings-entrenados" class="md-nav__link">
+    Embeddings entrenados
+  </a>
+  
+    <nav class="md-nav" aria-label="Embeddings entrenados">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fase-1-get-data" class="md-nav__link">
-    Fase 1: Get Data
+  <a href="#bert" class="md-nav__link">
+    BERT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fase-2-data-preparation" class="md-nav__link">
-    Fase 2: Data Preparation
+  <a href="#muse" class="md-nav__link">
+    MUSE
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fase-3-data-modeling" class="md-nav__link">
-    Fase 3: Data Modeling
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-4-data-visualization" class="md-nav__link">
-    Fase 4: Data Visualization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-5-data-reporting" class="md-nav__link">
-    Fase 5: Data Reporting
+  <a href="#gpt" class="md-nav__link">
+    GPT
   </a>
   
 </li>
@@ -309,63 +405,46 @@
               
                 
                 
-                <h1 id="power-bi"><strong>POWER BI</strong><a class="headerlink" href="#power-bi" title="Permanent link">&para;</a></h1>
-<p>Microsoft Power BI es la solución destinada a la inteligencia empresarial, que permite unir más de 65 fuentes de datos diferentes, para el modelado y posterior análisis de los datos, así como para presentarlos a través de paneles e informes.</p>
-<h2 id="caracteristicas-de-power-bi"><strong>Características de Power BI</strong><a class="headerlink" href="#caracteristicas-de-power-bi" title="Permanent link">&para;</a></h2>
+                <h1 id="embedding"><strong>EMBEDDING</strong><a class="headerlink" href="#embedding" title="Permanent link">&para;</a></h1>
+<p>Un embedding es una representación numérica de las palabras en un espacio vectorial.</p>
+<p>Cada dimensión del vector, recoge aspectos semánticos o sintácticos de cada palabra.</p>
+<p><img alt="imagen" src="imagenes/emb1.png" /></p>
+<p>La finalidad de los embeddings es que las máquinas comprendan el significado de las palabras de manera efectiva. Son principalmente útiles para tareas como el análisis de sentimientos o la traducción automática.</p>
+<h2 id="caracteristicas-de-los-embeddings"><strong>Características de los embeddings</strong><a class="headerlink" href="#caracteristicas-de-los-embeddings" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Está integrada en el ecosistema de Microsoft, por lo que permite acceder de forma sencilla a elementos almacenados en Sharepoint o Onedrive, así como conectar otras herrammientas del mismo ecosistema a Power BI de una manera muy intutitiva.</li>
-<li>Con los paneles de informes (cuadros de mando o Dashboards) se consigue que los datos puedan ser consultados por los usuarios de una manera muy fácil, atractiva e intuitiva.</li>
-<li>Agilidad en la interpretación de los datos y la interacción de estos entre las diferentes gráficas y tablas representadas.</li>
-<li>Los paneles pueden ser compartidos por muchos usuarios de una misma empresa u organización.</li>
-<li>Se puede disponer de una manera ágil de información sobre sus negocios en tiempo real.</li>
-<li>Seguridad en la visualización de la información ya que se pueden asignar permisos de visualización de los cuadros de mando.</li>
-<li>Tiene un ámplio repertorio de objetos visuales además de los que dispone por defecto en la propia herramienta.
-Gran comunidad de soporte que facilitan la resolución de problemas y dudas que puedan surgir en el camino de aprendizaje.</li>
-<li>Todos los meses se añaden mejoras o se optimizan los recursos de la herramienta.</li>
+<li>Captura semántica y sintáctica. Aprende el significado de la palabra y las relaciones sintácticas que tiene.</li>
+<li>Permite la transmisión de conocimiento, es decir se puede entrenar en wikipedia y usarse para cualquier tarea.</li>
+<li>Contextualidad. Permite variar el significado de la palabra según el contexto. Ejemplo: banco.</li>
+<li>Resuelve analogías. Por ejemplo: Madrid es a España como París es a ...</li>
+<li>Las palabras pertenecientes a un mismo campo semántico se encuentran próximas entre ellas.</li>
 </ul>
-<h2 id="licencias-de-power-bi"><strong>Licencias de Power BI</strong><a class="headerlink" href="#licencias-de-power-bi" title="Permanent link">&para;</a></h2>
-<p><img alt="imagen" src="imagenes/versiones.PNG" /></p>
-<p><img alt="imagen" src="imagenes/precios.PNG" /></p>
-<p><img alt="imagen" src="imagenes/tipos.PNG" /></p>
-<h2 id="fases-para-la-generacion-de-dashboards"><strong>Fases para la generación de Dashboards</strong><a class="headerlink" href="#fases-para-la-generacion-de-dashboards" title="Permanent link">&para;</a></h2>
-<p><img alt="imagen" src="imagenes/proceso.PNG" /></p>
-<h3 id="fase-1-get-data"><strong>Fase 1: Get Data</strong><a class="headerlink" href="#fase-1-get-data" title="Permanent link">&para;</a></h3>
-<p>Get Data = Obtener datos, realizar consultas (Query), importar datos, conexión a datos, etc.</p>
-<p><img alt="imagen" src="imagenes/GD.PNG" /></p>
-<p>Los datos residen en diferentes bases de datos y archivos (Microsoft SQL Server, excel, csv, etc). El primer paso es detectar cuales son los orígenes de datos a los que se debe conectar Power BI. El asistente de la propia conexión según los parámetros necesarios para conectar, guiará al usuario mediante unos pasos muy sencillos y explícitos.</p>
-<p>Este primer paso es importante ya que condicionará los tiempos de presentación en los cuadros de mando, ya que la importación de contenido irrelevante para las necesidades del proyecto, provocará un aumento en los tiempos de carga, que se arrastrará desde ese momento en adelante.</p>
-<p><img alt="imagen" src="imagenes/abrir.PNG" /></p>
-<h3 id="fase-2-data-preparation"><strong>Fase 2: Data Preparation</strong><a class="headerlink" href="#fase-2-data-preparation" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DP.PNG" /></p>
-<p>Tras la obtención de los datos desde los orígenes, es el momento de la preparación del dato, para normalizarlo según las necesidades y por supuesto, para optimizar al máximo el dato importado. Este paso es importante además de por el rendimiento en la posterior visualización, sino para garantizar un dato "limpio" y normalizado.</p>
+<h2 id="crear-embeddings"><strong>Crear embeddings</strong><a class="headerlink" href="#crear-embeddings" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Partimos de un conjunto de documentos sobre los que vamos a aprender. Ejemplo: Wikipedia</li>
+<li>Utilizamos modelos de IA para comprender el significado de las palabras.</li>
+<li>En principio utilizamos números aleatorios para crear los vectores.</li>
+<li>A medida que el modelo recorre distintos textos, va ajustando estos números para que reflejen las relaciones que existen en el texto.</li>
+</ul>
+<h2 id="problemas-para-entrenar-embeddings"><strong>Problemas para entrenar embeddings</strong><a class="headerlink" href="#problemas-para-entrenar-embeddings" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Limpieza de datos.</li>
-<li>Verificación de datos.</li>
-<li>Tipos de datos.</li>
-<li>Formateo de los datos numéricos y fecha.</li>
-<li>Definir resúmenes en columnas numéricas.</li>
-<li>Establecer nombres lógicos para los campos.</li>
-<li>Nombres de campo únicos en todo el conjunto de datos.</li>
-<li>Cambiar el nombre de los pasos aplicados.</li>
-<li>Particionar campos.</li>
+<li>Requiere cantidad grandes de datos (wikipedia, libros, etc).</li>
+<li>Necesita tecnologías costosas como GPU's.</li>
+<li>Utilizan mucho tiempo en el entrenamiento (dias, semanas,...).</li>
+<li>El ajuste de parámetros requiere múltiples iteraciones que conlleva costes en tiempo y recursos.</li>
 </ol>
-<p>Existe un motor diseñado para estas funciones que se llama <strong>Power Query</strong> y utiliza el lenguaje "M".</p>
-<h3 id="fase-3-data-modeling"><strong>Fase 3: Data Modeling</strong><a class="headerlink" href="#fase-3-data-modeling" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DM.PNG" /></p>
-<p>En el proceso de modelado, es donde se relacionan las tablas de datos cargadas, de forma que se pueda acceder a datos de diferenes tablas, partiendo de un valor común entre tablas.</p>
-<p>En esta fase es donde se realizan las medidas y columnas calculadas necesarias para complementar el contenido que se necesita, según los KPIs especificados.</p>
-<p>Un modelo de datos es la recopilación de:</p>
-<ul>
-<li>Tablas de datos cargadas.</li>
-<li>Relaciones entre las tablas cargadas.</li>
-<li>Las medidas (fórmulas) escritas que aplican las KPIs.</li>
-</ul>
-<h3 id="fase-4-data-visualization"><strong>Fase 4: Data Visualization</strong><a class="headerlink" href="#fase-4-data-visualization" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DV.PNG" /></p>
-<p>Es la fase del desarrollo de los cuadros de mando, donde van a estar representados los KPIs definidos de una forma gráfica o con contenido muy resumido de forma que no sea complicada su lectura, a fin de conseguir poder tener una capacidad alta en la toma de decisiones, a partir de los datos representados.</p>
-<h3 id="fase-5-data-reporting"><strong>Fase 5: Data Reporting</strong><a class="headerlink" href="#fase-5-data-reporting" title="Permanent link">&para;</a></h3>
-<p>Consiste en publicar el contenido que se acaba de diseñar, con el fin de que el acceso a este no quede restringido a nuestro equipo, pudiendo permitir el acceso a diferentes usuarios dentro de la corporación.</p>
-<p>Este proceso es muy importante a nivel de seguridad, ya que va a ser donde ser realicen las restricciones, tanto de acceso a los tableros, como de acceso a los datos y asignación de roles.</p>
+<h2 id="embeddings-entrenados"><strong>Embeddings entrenados</strong><a class="headerlink" href="#embeddings-entrenados" title="Permanent link">&para;</a></h2>
+<p>Vistos los problemas que puede generar entrenar los embeddings desde cero, la mejor solución es utilizar embeddings que ya estén entrenados para realizar nuevas tareas. </p>
+<p>Los más utilizados son BERT, MUSE y GPT.</p>
+<h3 id="bert"><strong>BERT</strong><a class="headerlink" href="#bert" title="Permanent link">&para;</a></h3>
+<p><strong>BERT</strong> (Representaciones de Codificadores Bidireccional de Transformadores) fue desarrollado por Google en 2018. Se entrenó sobre un corpus compuesto por noticias, libros y artículos de distinto ámbito.
+Utiliza el "mecanismo de atención" que permite entender las palabras y las relaciones entre ellas según el contexto.</p>
+<p><img alt="imagen" src="imagenes/bert.PNG" /></p>
+<h3 id="muse"><strong>MUSE</strong><a class="headerlink" href="#muse" title="Permanent link">&para;</a></h3>
+<p><strong>MUSE</strong> (Embeddings supervisados y no supervisados multilingües) es un embedding en el que se comparten palabras de distintos idiomas.Creado por Facebook en 2018.</p>
+<h3 id="gpt"><strong>GPT</strong><a class="headerlink" href="#gpt" title="Permanent link">&para;</a></h3>
+<p>Los modelos GPT han supuesto una verdadera revolución.<strong>GPT</strong> (Generativos, Preentrenados, Transformers). La última versión que tenemos es GPT4 que ha sido entrenado con un conjunto de datos muy grande.</p>
+<p>GPT es capaz de detectar mayores matices del lenguaje, además de interactuar con interfaces externas para realizar tareas más complejas. </p>
+<p><img alt="imagen" src="imagenes/gpt.PNG" /></p>
                 
               
               
@@ -381,6 +460,26 @@ Gran comunidad de soporte que facilitan la resolución de problemas y dudas que 
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="p1.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2. Librerías para PLN" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              2. Librerías para PLN
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

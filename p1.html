@@ -307,12 +307,40 @@
     Actividad 2.1
   </a>
   
+    <nav class="md-nav" aria-label="Actividad 2.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analisis-semantico-con-wordnet" class="md-nav__link">
+    Análisis semántico con WordNet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        3. Embedding
+      </a>
     </li>
   
 
@@ -415,6 +443,19 @@
     Actividad 2.1
   </a>
   
+    <nav class="md-nav" aria-label="Actividad 2.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analisis-semantico-con-wordnet" class="md-nav__link">
+    Análisis semántico con WordNet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -489,7 +530,7 @@ Probamos con la palabra caminando</p>
 Inicializamos el tokenizador</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">lematizador</span><span class="o">=</span><span class="n">WordNetLemmatizer</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="n">lematizador</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s2">&quot;houses&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="n">lematizador</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s2">&quot;running&quot;</span><span class="p">,</span><span class="s2">&quot;v&quot;</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="spacy"><strong>Spacy</strong><a class="headerlink" href="#spacy" title="Permanent link">&para;</a></h2>
 <p>Es otra librería de Python para PLN muy similar a NLTK y su implementación suele ser más rápida y precisa.</p>
@@ -554,6 +595,29 @@ Podemos mostrar cada token que etiqueta tiene
 </li>
 </ol>
 </div>
+<h3 id="analisis-semantico-con-wordnet"><strong>Análisis semántico con WordNet</strong><a class="headerlink" href="#analisis-semantico-con-wordnet" title="Permanent link">&para;</a></h3>
+<p>La filosofía de diseño de WordNet se apoya en una idea similar a la del conocido refrán "dime con quién andas y te diré quién eres". Una versión semántica de este refrán podría ser "dime a qué palabras se parece y te diré lo que significa". </p>
+<ul>
+<li>
+<p>Es una base de datos léxica usada para el idioma inglés.</p>
+</li>
+<li>
+<p>Ayuda a resolver el problema de la sinonimia.</p>
+</li>
+<li>
+<p>También dispone en otros idiomas, incluyendo el castellano (euroWordNet)</p>
+</li>
+<li>
+<p>Los items léxicos están categorizados en más de 115.000 synsets.</p>
+</li>
+<li>
+<p>Un synset consta de un conjunto de sinónimos, una definición de diccionario (glosa) y algunos ejemplos de uso.</p>
+</li>
+<li>
+<p>Las relaciones semánticas se representan como redes que las aplicaciones pueden recorrer para encontrar sinónimos, antónimos, ...</p>
+</li>
+</ul>
+<p>https://github.com/jatroyano/notebook-nltk-similitud/blob/master/nltk-similitud.ipynb</p>
 <!--
 ### **ChatBot**
 
@@ -667,6 +731,21 @@ Tras la obtención de los datos desde los orígenes, es el momento de la prepara
           </div>
         </a>
       
+      
+        
+        <a href="p.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 3. Embedding" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              3. Embedding
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

@@ -276,8 +276,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bolsa-de-palabras" class="md-nav__link">
+    Bolsa de palabras
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelos-n-gramas" class="md-nav__link">
+    Modelos n-gramas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-11" class="md-nav__link">
+    Actividad 1.1
+  </a>
   
 </li>
       
@@ -299,6 +320,21 @@
     <li class="md-nav__item">
       <a href="p1.html" class="md-nav__link">
         2. Librerías para PLN
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        3. Embedding
       </a>
     </li>
   
@@ -386,8 +422,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bolsa-de-palabras" class="md-nav__link">
+    Bolsa de palabras
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelos-n-gramas" class="md-nav__link">
+    Modelos n-gramas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-11" class="md-nav__link">
+    Actividad 1.1
+  </a>
   
 </li>
       
@@ -451,31 +508,87 @@ Un token es una secuencia de caracteres separados por espacio en blanco. </p>
 <h3 id="corpus"><strong>Corpus</strong><a class="headerlink" href="#corpus" title="Permanent link">&para;</a></h3>
 <p>Un <strong>corpus lingüístico</strong> es un conjunto de textos relativamente grande, que refleja una lengua. Es decir, es un conjunto amplio y estructurado de ejemplos reales de uso de la lengua.</p>
 <p>Encontrar un buen corpus sobre el cual trabajar no suele ser una tarea sencilla; uno que se suele utilizar para entrenar modelos es la información de wikipedia.</p>
+<h3 id="bolsa-de-palabras"><strong>Bolsa de palabras</strong><a class="headerlink" href="#bolsa-de-palabras" title="Permanent link">&para;</a></h3>
+<p><strong>Bag of Words (BoW)</strong> es una técnica de PLN que busca representar documentos como vectores numéricos. Es un modelo de representación que se basa en la definición de un vector de longitud constante donde se reflejan las ocurrencias de cada uno de los términos existentes a lo largo de las unidades que forma parte del corpus (párrafo, documento, conjunto de documentos). 
+<center>
+<img alt="imagen" src="imagenes/PLN4.PNG" />
+</center></p>
+<p>Es una técnica que surgió en el año 1954. Describe toda la información que hay en cada una de las frases. 
+Se representa mediante una tabla donde se marca el número de veces que una palabra aparece en cada uno de los documentos.</p>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>No considera la estructura gramatical ni el orden de las palabras.</p>
+</div>
+<p>Esta técnica no considera el orden de las palabras aunque es bastante importante. Por ejemplo, no significaría lo mismo "la casa de María " que "la María de casa".</p>
+<p>Se puede utilizar la bolsa de trabajo por ejemplo, para el análisis de sentimientos, donde nos interesaría saber si el sentimiento es positivo o negativo. También se puede utilizar en la detección de spam, ya que solamente tendría que buscar parlabras del tipo: premio, ganador, etc. para saber si ese correo es spam o no. En el caso de CHATGPT, no podríamos utilizarlo ya que sí que es importante el orden que tienen las palabras.</p>
+<p>Una de las técnicas que se utilizan en la bolsa de palabras para convertir el texto en vector es el <strong>conteo de palabras</strong> que consisten en lo siguiente:</p>
+<ol>
+<li>Determinar el tamaño del vocabulario, es contar las palabras únicas que aparecen en los documentos.</li>
+<li>Creamos un vector basado en el tamaño del vocabulario. Cada posición representa una palabra en el vocabulario.</li>
+<li>Eliminación de las palabras más frecuentes. Se eliminan las stopwords así como palabras comunes a todos los documentos.</li>
+</ol>
+<p><img alt="imagen" src="imagenes/bow.PNG" /></p>
+<p>Con esto, ya podemos sacar una primera conclusión, el documento uno es un sentimiento positivo de las películas. El documento dos un sentimiento negativo y el tres negativo.</p>
+<p>Construcción de un BoW:</p>
+<ol>
+<li>Construcción del vocabulario. Se tiene que preprocesar el documento con anterioridad.</li>
+<li>Vectorizar los documentos. Crear un vector donde cada posición representa una palabra en el vocabulario.</li>
+<li>Eliminamos las palabras más frecuentes. No solo las stopwords sino también palabras que se repiten mucho y no aportan información.</li>
+<li>Vectorización de documentos con el documento totalmente preprocesado.</li>
+<li>Normalización de las frecuencias. Si comparamos documentos de diferentes tamaños, tenemos que dividir la frecuencia de cada palabra entre la longitud total del documento en el que se encuentra.</li>
+</ol>
+<p>Cuando ya tenemos construido el BOW, tendremos una matriz donde cada fila representa un documento y cada columna una palabra del vocabulario y los valores de la matriz, son la frecuencia de dicha palabra en dicho documento.</p>
+<h3 id="modelos-n-gramas"><strong>Modelos n-gramas</strong><a class="headerlink" href="#modelos-n-gramas" title="Permanent link">&para;</a></h3>
+<p>Los modelos <strong>n-gramas</strong> son modelos estadísticos para predecir la siguiente palabra dada una secuencia de elementos lingüísticos.
+Un n-grama es una secuencia de n elementos como pueden ser palabras, letras, etc.</p>
+<p>Ejemplo: "La vida es bella"</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1-grama: &quot;la&quot;,&quot;vida&quot;,&quot;es&quot;,&quot;bella&quot;
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>2-grama: &quot;la vida&quot;, &quot;vida es&quot;, &quot;es bella&quot;
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span>3-grama: &quot;la vida es&quot;,&quot;vida es bella&quot;
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span>...
+</code></pre></div>
+<p>Cuantos más n-gramas tengamos, más información tendremos sobre el contexto.</p>
+<p>Los modelos de n-gramas funcionan de la siguiente manera:</p>
+<ul>
+<li>Los modelos se construyen calculando la frecuencia de cada n-grama en el conjunto de datos.</li>
+<li>Basándonos en dichas frecuencias, se calculan las probabilidades.</li>
+</ul>
+<p>Por ejemplo si digo "la vida es ", habrá más probabilidades de que a continuación vaya la palabra "bella" que la palabra "fea".</p>
+<p>Estos modelos se utilizan en la predicción de texto, generación de texto, transcripción de voz a texto, clasificación de texto.</p>
+<h2 id="actividad-11">Actividad 1.1<a class="headerlink" href="#actividad-11" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Actividad 1.1</p>
+<p>Crea un notebook dividido en dos partes:</p>
+<ul>
+<li>BoW</li>
+</ul>
+<ol>
+<li>
+<p>Descarga un libro.</p>
+</li>
+<li>
+<p>Realiza el preprocesamiento.</p>
+</li>
+<li>
+<p>Justifica el tema del libro.</p>
+</li>
+</ol>
+<ul>
+<li>N-grama</li>
+</ul>
+<ol>
+<li>
+<p>Realiza la práctica anterior con 2-grama y 4-grama.</p>
+</li>
+<li>
+<p>Conclusiones.</p>
+</li>
+</ol>
+</div>
 <!--
-
-### **Bolsa de palabras**
-
-**Bag of Words (BoW)** es un modelo de representación que se basa en la definición de un vector de longitud constante donde se reflejan las ocurrencias de cada uno de los términos existentes a lo largo de las unidades que forma parte del corpus (párrafo, documento, conjunto de documentos). Es una técnica de Procesamiento del Lenguaje Natural que busca representar documentos como vectores numéricos.
-
-![imagen](imagenes/PLN4.PNG)
-
-Es una técnica que surgió en el año 1954. Describe toda la información que hay en cada una de las frases. 
-Se representa mediante una tabla donde se marca el número de veces que una palabra aparece en cada uno de los documentos.
-
-Esta técnica no considera el orden de las palabras aunque es bastante importante. Por ejemplo, no significaría lo mismo "la casa de María " que "la María de casa".
-
-Se puede utilizar la bolsa de trabajo por ejemplo, para el análisis de sentimientos, donde nos interesaría saber si el sentimiento es positivo o negativo. También se puede utilizar en la detección de spam, ya que solamente tendría que buscar parlabras del tipo: premio, ganador, etc. para saber si ese correo es spam o no. En el caso de CHATGPT, no podríamos utilizarlo ya que sí que es importante el orden que tienen las palabras.
-
-Una de las técnicas que se utilizan en la bolsa de palabras para convertir el texto en vecto es el **conteo de palabras** que consisten en lo siguiente:
-
-1. Determinar el tamaño del vocabulario, es contar las palabras únicas que aparecen en los documentos.
-2. Creamos un vector basado en el tamaño del vocabulario. Cada posición representa una palabra en el vocabulario.
-3. Eliminación de las palabras más frecuentes. Se eliminan las stopwords así como palabras comunes a todos los documentos.
-
-![imagen](imagenes/bow.PNG)
-
-Con esto, ya podemos sacar una primera conclusión, el documento uno es un sentimiento positivo de las películas. El documento dos un sentimiento negativo y el tres negativo.
-
 ## **Similitud de vectores**
 
 

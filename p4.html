@@ -16,7 +16,7 @@
     
     
       
-        <title>**GENERACIÓN DE TEXTO CON MODELOS DE MARKOV** - Procesamiento del Lenguaje Natural</title>
+        <title>**Análisis de Sentimiento** - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generacion-de-texto-con-modelos-de-markov" class="md-skip">
+        <a href="#analisis-de-sentimiento" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              **GENERACIÓN DE TEXTO CON MODELOS DE MARKOV**
+              **Análisis de Sentimiento**
             
           </span>
         </div>
@@ -209,6 +209,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        3. Embedding
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -235,64 +250,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelo-de-markov-de-segundo-orden" class="md-nav__link">
-    Modelo de Markov de segundo orden
+  <a href="#aplicaciones-del-analisis-de-sentimiento" class="md-nav__link">
+    Aplicaciones del análisis de sentimiento
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#l" class="md-nav__link">
-    L
+  <a href="#metodos-para-el-analisis-de-sentimiento" class="md-nav__link">
+    Métodos para el análisis de sentimiento
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fases-para-la-generacion-de-dashboards" class="md-nav__link">
-    Fases para la generación de Dashboards
-  </a>
-  
-    <nav class="md-nav" aria-label="Fases para la generación de Dashboards">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fase-1-get-data" class="md-nav__link">
-    Fase 1: Get Data
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-2-data-preparation" class="md-nav__link">
-    Fase 2: Data Preparation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-3-data-modeling" class="md-nav__link">
-    Fase 3: Data Modeling
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-4-data-visualization" class="md-nav__link">
-    Fase 4: Data Visualization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fase-5-data-reporting" class="md-nav__link">
-    Fase 5: Data Reporting
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -309,57 +276,60 @@
               
                 
                 
-                <h1 id="generacion-de-texto-con-modelos-de-markov"><strong>GENERACIÓN DE TEXTO CON MODELOS DE MARKOV</strong><a class="headerlink" href="#generacion-de-texto-con-modelos-de-markov" title="Permanent link">&para;</a></h1>
-<p>Podemos utilizar el modelo de Markov para generar textos, además de para clasificar texto. El método consiste en tener una bolsa de palabras y el modelo va a escoger de toda la bolsa de palabras, la que sea más probable que continúe en una frase dada.</p>
-<p>Contamos con la matriz de transición y el vector de probabilidades. El problema que tiene este modelo es que genera la palabra mirándo únicamente la palabra anterior.</p>
-<p><strong> La niña está jugando con el gato [palabra] </strong></p>
-<p>Si tenemos en cuenta la paabra anterior, es decir gato, seguramente nos devolverá "maúlla" por lo tanto el resultado de la frase será " La niña está jugando con el gato maúlla" que no tiene mucho sentido por lo tanto vamos a tener en cuenta no solo un estado (la palabra anterior) sino dos estados o incluso tres estados (las tres palabras anteriores).</p>
-<h2 id="modelo-de-markov-de-segundo-orden"><strong>Modelo de Markov de segundo orden</strong><a class="headerlink" href="#modelo-de-markov-de-segundo-orden" title="Permanent link">&para;</a></h2>
-<p>Es otra forma de almacenara y representar las probabilidades de transición. En vez de tener una matriz bidimensional, tendríamos una matriz tridimensional. Se tiene en cuenta no solo el estado anterior sino otro estado más.</p>
-<p>También podemos aumentar el número de estados (tercer orden) pero a medida que aumente el número de estados anteriores, el tamaño de la matriz crece de forma exponencial y esto podría llevar a problemas de eficiencia computacional ya que necesita muchos recursos para su implementación y cálculo.</p>
-<h2 id="l"><strong>L</strong><a class="headerlink" href="#l" title="Permanent link">&para;</a></h2>
-<p><img alt="imagen" src="imagenes/versiones.PNG" /></p>
-<p><img alt="imagen" src="imagenes/precios.PNG" /></p>
-<p><img alt="imagen" src="imagenes/tipos.PNG" /></p>
-<h2 id="fases-para-la-generacion-de-dashboards"><strong>Fases para la generación de Dashboards</strong><a class="headerlink" href="#fases-para-la-generacion-de-dashboards" title="Permanent link">&para;</a></h2>
-<p><img alt="imagen" src="imagenes/proceso.PNG" /></p>
-<h3 id="fase-1-get-data"><strong>Fase 1: Get Data</strong><a class="headerlink" href="#fase-1-get-data" title="Permanent link">&para;</a></h3>
-<p>Get Data = Obtener datos, realizar consultas (Query), importar datos, conexión a datos, etc.</p>
-<p><img alt="imagen" src="imagenes/GD.PNG" /></p>
-<p>Los datos residen en diferentes bases de datos y archivos (Microsoft SQL Server, excel, csv, etc). El primer paso es detectar cuales son los orígenes de datos a los que se debe conectar Power BI. El asistente de la propia conexión según los parámetros necesarios para conectar, guiará al usuario mediante unos pasos muy sencillos y explícitos.</p>
-<p>Este primer paso es importante ya que condicionará los tiempos de presentación en los cuadros de mando, ya que la importación de contenido irrelevante para las necesidades del proyecto, provocará un aumento en los tiempos de carga, que se arrastrará desde ese momento en adelante.</p>
-<p><img alt="imagen" src="imagenes/abrir.PNG" /></p>
-<h3 id="fase-2-data-preparation"><strong>Fase 2: Data Preparation</strong><a class="headerlink" href="#fase-2-data-preparation" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DP.PNG" /></p>
-<p>Tras la obtención de los datos desde los orígenes, es el momento de la preparación del dato, para normalizarlo según las necesidades y por supuesto, para optimizar al máximo el dato importado. Este paso es importante además de por el rendimiento en la posterior visualización, sino para garantizar un dato "limpio" y normalizado.</p>
-<ol>
-<li>Limpieza de datos.</li>
-<li>Verificación de datos.</li>
-<li>Tipos de datos.</li>
-<li>Formateo de los datos numéricos y fecha.</li>
-<li>Definir resúmenes en columnas numéricas.</li>
-<li>Establecer nombres lógicos para los campos.</li>
-<li>Nombres de campo únicos en todo el conjunto de datos.</li>
-<li>Cambiar el nombre de los pasos aplicados.</li>
-<li>Particionar campos.</li>
-</ol>
-<p>Existe un motor diseñado para estas funciones que se llama <strong>Power Query</strong> y utiliza el lenguaje "M".</p>
-<h3 id="fase-3-data-modeling"><strong>Fase 3: Data Modeling</strong><a class="headerlink" href="#fase-3-data-modeling" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DM.PNG" /></p>
-<p>En el proceso de modelado, es donde se relacionan las tablas de datos cargadas, de forma que se pueda acceder a datos de diferenes tablas, partiendo de un valor común entre tablas.</p>
-<p>En esta fase es donde se realizan las medidas y columnas calculadas necesarias para complementar el contenido que se necesita, según los KPIs especificados.</p>
-<p>Un modelo de datos es la recopilación de:</p>
+                <h1 id="analisis-de-sentimiento"><strong>Análisis de Sentimiento</strong><a class="headerlink" href="#analisis-de-sentimiento" title="Permanent link">&para;</a></h1>
+<p>En el análisis de sentimientos se puede interpretar, analizar y categorizar las opiniones y emociones humanas expresadas en forma de texto.</p>
+<p>Categorización: positivo, negativo, neutral.</p>
+<p>Podemos considerar el análisis de sentimiento como una tarea de <strong>clasificación</strong> etiquetando las entradas como positivas y negativas por ejemplo.
+Otra posibilidad es tratar el análisis de sentimiento como una tarea de <strong>regresión</strong>, es decir predecir un valor continuo en vez de una categoría.</p>
+<p>El análisis de sentimiento tiene en cuenta dos variables:</p>
 <ul>
-<li>Tablas de datos cargadas.</li>
-<li>Relaciones entre las tablas cargadas.</li>
-<li>Las medidas (fórmulas) escritas que aplican las KPIs.</li>
+<li>
+<p><strong>Polaridad:</strong> es un comentario positivo o negativo.</p>
+</li>
+<li>
+<p><strong>Intensidad:</strong> diferentes grados de la polaridad.</p>
+</li>
 </ul>
-<h3 id="fase-4-data-visualization"><strong>Fase 4: Data Visualization</strong><a class="headerlink" href="#fase-4-data-visualization" title="Permanent link">&para;</a></h3>
-<p><img alt="imagen" src="imagenes/DV.PNG" /></p>
-<p>Es la fase del desarrollo de los cuadros de mando, donde van a estar representados los KPIs definidos de una forma gráfica o con contenido muy resumido de forma que no sea complicada su lectura, a fin de conseguir poder tener una capacidad alta en la toma de decisiones, a partir de los datos representados.</p>
-<h3 id="fase-5-data-reporting"><strong>Fase 5: Data Reporting</strong><a class="headerlink" href="#fase-5-data-reporting" title="Permanent link">&para;</a></h3>
-<p>Consiste en publicar el contenido que se acaba de diseñar, con el fin de que el acceso a este no quede restringido a nuestro equipo, pudiendo permitir el acceso a diferentes usuarios dentro de la corporación.</p>
-<p>Este proceso es muy importante a nivel de seguridad, ya que va a ser donde ser realicen las restricciones, tanto de acceso a los tableros, como de acceso a los datos y asignación de roles.</p>
+<p><img alt="imagen" src="imagenes/senti1.PNG" /></p>
+<h2 id="aplicaciones-del-analisis-de-sentimiento"><strong>Aplicaciones del análisis de sentimiento</strong><a class="headerlink" href="#aplicaciones-del-analisis-de-sentimiento" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Redes sociales: analiza los comentarios en tiempo real para ver reacciones de la gente o reputación. </p>
+</li>
+<li>
+<p>Reseñas de productos o servicios.</p>
+</li>
+<li>
+<p>Encuestas en línea: para comprender mejor las preferencias de los clientes.</p>
+</li>
+<li>
+<p>Decisiones de inversión.</p>
+</li>
+</ul>
+<h2 id="metodos-para-el-analisis-de-sentimiento"><strong>Métodos para el análisis de sentimiento</strong><a class="headerlink" href="#metodos-para-el-analisis-de-sentimiento" title="Permanent link">&para;</a></h2>
+<p>Una manera básica y sencilla es la detección de palabras clave como bueno, malo, pésimo,... pero no comprende el contexto.</p>
+<p>El método con Aprendizaje automático, basado en técnicas de IA, construye un modelo que aprende a través de miles de ejemplos a distinguir entre un comentario positivo y otro negativo.</p>
+<p>Descargamos el módulo para reseñas en español</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sentiment</span><span class="o">-</span><span class="n">analysis</span><span class="o">-</span><span class="n">spanish</span>
+</code></pre></div>
+Cargamos el modelo en memoria y lo almacenamos en la variable model_sentiment
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">sentiment_analysis_spanish</span> <span class="kn">import</span> <span class="n">sentiment_analysis</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">model_sentiment</span> <span class="o">=</span> <span class="n">sentiment_analysis</span><span class="o">.</span><span class="n">SentimentAnalysisSpanish</span><span class="p">()</span>
+</code></pre></div>
+Definimos una función que tiene como entrada el texto y el modelo y nos devuelve el sentimiento.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">def</span> <span class="nf">sentimiento</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span> <span class="n">sentiment</span><span class="o">=</span><span class="n">model_sentiment</span><span class="p">):</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="k">return</span> <span class="n">sentiment</span><span class="o">.</span><span class="n">sentiment</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+</code></pre></div>
+Aplicamos nuestro modelo sobre por ejemplo los títulos de mi dataset titulos_sentimiento
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">titulos_sentimiento</span><span class="p">[</span><span class="s2">&quot;prediccion_ia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titulos_sentimiento</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">texto</span><span class="p">:</span> <span class="n">sentimiento</span><span class="p">(</span><span class="n">texto</span><span class="p">))</span>
+</code></pre></div>
+Ajusto las predicciones para quitar los decimales y que me aparezcan únicamente dos valores
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">def</span> <span class="nf">ajusto_predicciones_ia</span><span class="p">(</span><span class="n">prediccion</span><span class="p">):</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="k">if</span> <span class="n">prediccion</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="k">return</span> <span class="mi">0</span>
+<span class="linenos" data-linenos="4 "></span>  <span class="k">else</span><span class="p">:</span>
+<span class="linenos" data-linenos="5 "></span>    <span class="k">return</span> <span class="mi">3</span>
+</code></pre></div></p>
                 
               
               
