@@ -426,6 +426,10 @@
 <span class="linenos" data-linenos="32 "></span><span class="c1"># Evaluar el modelo</span>
 <span class="linenos" data-linenos="33 "></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="linenos" data-linenos="34 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test accuracy:&#39;</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">)</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="c1"># Guardar el modelo</span>
+<span class="linenos" data-linenos="37 "></span>
+<span class="linenos" data-linenos="38 "></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;sentiment_model1.h5&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="redes-neuronales-convolucionales"><strong>Redes Neuronales Convolucionales</strong><a class="headerlink" href="#redes-neuronales-convolucionales" title="Permanent link">&para;</a></h3>
 <p>La <strong>convolución</strong> es una operación matemática que se utiliza para extraer características importantes de los datos. Se utiliza mucho en el tratamiento de imágenes.</p>
