@@ -16,7 +16,7 @@
     
     
       
-        <title>5. PLN con Redes neuronales - Procesamiento del Lenguaje Natural</title>
+        <title>5. PLN con Redes Neuronales - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. PLN con Redes neuronales 
+              5. PLN con Redes Neuronales 
             
           </span>
         </div>
@@ -257,12 +257,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          5. PLN con Redes neuronales 
+          5. PLN con Redes Neuronales 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="p5.html" class="md-nav__link md-nav__link--active">
-        5. PLN con Redes neuronales 
+        5. PLN con Redes Neuronales 
       </a>
       
         
@@ -353,7 +353,7 @@
               
                 
                 
-                <h1 id="pln-con-redes-neuronales"><strong>PLN con Redes neuronales</strong><a class="headerlink" href="#pln-con-redes-neuronales" title="Permanent link">&para;</a></h1>
+                <h1 id="pln-con-redes-neuronales"><strong>PLN con Redes Neuronales</strong><a class="headerlink" href="#pln-con-redes-neuronales" title="Permanent link">&para;</a></h1>
 <p>Las redes neuronales son una estructura de neuronas interconectaddas entre sí que procesan datos de manera similar al cerebro humano.</p>
 <p>La composición de las redes neuronales es la siguiente:</p>
 <ul>
@@ -373,6 +373,7 @@
 <p>Estas redes permiten mantener una especie de "memoria" de las entradas anteriores mientras se procesan las entradas actuales.</p>
 <p>Una red recurrente es capaz de procesar varias palabras a la vez y por tanto entender mejor el contexto de cada palabra.</p>
 <p><img alt="imagen" src="imagenes/redes2.PNG" /></p>
+<p><img alt="imagen" src="imagenes/recu.PNG" /></p>
 <p>Algunos tipos de Redes Neuronales Recurrentes:</p>
 <ul>
 <li>
@@ -425,6 +426,47 @@
 <span class="linenos" data-linenos="32 "></span><span class="c1"># Evaluar el modelo</span>
 <span class="linenos" data-linenos="33 "></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="linenos" data-linenos="34 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test accuracy:&#39;</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">)</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="c1"># Guardar el modelo</span>
+<span class="linenos" data-linenos="37 "></span>
+<span class="linenos" data-linenos="38 "></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;sentiment_model1.h5&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="c1"># Probar con otro conjunto de datos</span>
+<span class="linenos" data-linenos="41 "></span>
+<span class="linenos" data-linenos="42 "></span><span class="c1"># Cargar el modelo</span>
+<span class="linenos" data-linenos="43 "></span>
+<span class="linenos" data-linenos="44 "></span><span class="c1"># Cargar el modelo previamente entrenado</span>
+<span class="linenos" data-linenos="45 "></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;/content/rnn_sentiment_model.h5&#39;</span><span class="p">)</span>  <span class="c1"># Reemplaza &#39;rnn_sentiment_model.h5&#39; con el nombre de tu archivo de modelo</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span><span class="c1"># Imprimir las 10 primeras listas del conjunto de entrenamiento</span>
+<span class="linenos" data-linenos="48 "></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos" data-linenos="49 "></span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Secuencia </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x_train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="50 "></span>
+<span class="linenos" data-linenos="51 "></span>
+<span class="linenos" data-linenos="52 "></span><span class="c1"># Tus propias revisiones de películas</span>
+<span class="linenos" data-linenos="53 "></span><span class="n">reviews</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos" data-linenos="54 "></span>    <span class="s2">&quot;This movie was fantastic&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="55 "></span>    <span class="s2">&quot;solid performances in this straightforward adaption&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="56 "></span>    <span class="s2">&quot;brilliant documentary&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="57 "></span>    <span class="s2">&quot;worst mistake of my life&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="58 "></span><span class="p">]</span>
+<span class="linenos" data-linenos="59 "></span>
+<span class="linenos" data-linenos="60 "></span><span class="c1"># Tokeniza tus revisiones utilizando el mismo Tokenizer que usaste para el modelo</span>
+<span class="linenos" data-linenos="61 "></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>  <span class="c1"># Asegúrate de que coincida con el valor que usaste para entrenar el modelo</span>
+<span class="linenos" data-linenos="62 "></span><span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span>
+<span class="linenos" data-linenos="63 "></span><span class="n">sequences</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">reviews</span><span class="p">)</span>
+<span class="linenos" data-linenos="64 "></span>
+<span class="linenos" data-linenos="65 "></span><span class="c1"># Asegúrate de que todas las secuencias tengan la misma longitud</span>
+<span class="linenos" data-linenos="66 "></span><span class="n">max_sequence_length</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Asegúrate de que coincida con el valor que usaste para entrenar el modelo</span>
+<span class="linenos" data-linenos="67 "></span><span class="n">sequences</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">max_sequence_length</span><span class="p">)</span>
+<span class="linenos" data-linenos="68 "></span>
+<span class="linenos" data-linenos="69 "></span><span class="c1"># Realiza predicciones en tus propias revisiones</span>
+<span class="linenos" data-linenos="70 "></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
+<span class="linenos" data-linenos="71 "></span>
+<span class="linenos" data-linenos="72 "></span><span class="c1"># Muestra las predicciones</span>
+<span class="linenos" data-linenos="73 "></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">prediction</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">):</span>
+<span class="linenos" data-linenos="74 "></span>    <span class="n">sentiment</span> <span class="o">=</span> <span class="s2">&quot;positivo&quot;</span> <span class="k">if</span> <span class="n">prediction</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="s2">&quot;negativo&quot;</span>
+<span class="linenos" data-linenos="75 "></span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sentimiento de tu revisión </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sentiment</span><span class="si">}</span><span class="s2"> (Puntuación: </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="redes-neuronales-convolucionales"><strong>Redes Neuronales Convolucionales</strong><a class="headerlink" href="#redes-neuronales-convolucionales" title="Permanent link">&para;</a></h3>
 <p>La <strong>convolución</strong> es una operación matemática que se utiliza para extraer características importantes de los datos. Se utiliza mucho en el tratamiento de imágenes.</p>
@@ -434,7 +476,7 @@
 <p><strong>Capa convolucional:</strong> Es la primera capa de una red convolucional. Realiza la mayoría de los cálculos y se encarga de identificar características locales. </p>
 </li>
 <li>
-<p><strong>capa de activación:</strong> añaden funciones no lineales para permitir la aproximación de funciones más complejas.</p>
+<p><strong>Capa de activación:</strong> añaden funciones no lineales para permitir la aproximación de funciones más complejas.</p>
 </li>
 <li>
 <p><strong>Capa de agrupación (pooling):</strong> Reduce la dimensionalidad de los datos y extrae características más complejas.</p>
@@ -443,6 +485,7 @@
 <p><strong>Capa totalmente conectada:</strong> La última capa que procesa la información y produce la salida final.</p>
 </li>
 </ul>
+<p><img alt="imagen" src="imagenes/convo.PNG" /></p>
 <p>A medida que los datos de la imagen avanzan a través de estas capas, la CNN reconoce elementos o formas más grandes, hasta identificar el objeto deseado.</p>
 <p>En el PLN se utilizan estas redes para aprender características locales y globales del texto.</p>
 <p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
