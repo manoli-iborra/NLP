@@ -12,7 +12,7 @@ nav:
   #   - "4.3. ": "p.md"
   #   - "4.4. ": "p.md"
   #   - "4.5. ": "p.md"
-  #- "3. Aprendizaje automático ": "p5.md"
+  - "5. PLN con Redes neuronales ": "p5.md"
   #- "4. Transformers": "p6.md"
   # - "7. ": "p.md"
 
