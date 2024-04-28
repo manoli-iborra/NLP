@@ -16,7 +16,7 @@
     
     
       
-        <title>**TRANSFORMERS** - Procesamiento del Lenguaje Natural</title>
+        <title>6. Transformers - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              **TRANSFORMERS**
+              6. Transformers
             
           </span>
         </div>
@@ -254,6 +254,75 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          6. Transformers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p6.html" class="md-nav__link md-nav__link--active">
+        6. Transformers
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-los-transformers" class="md-nav__link">
+    Introducción a los transformers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hugging-face" class="md-nav__link">
+    Hugging Face
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repaso-de-transformers" class="md-nav__link">
+    Repaso de transformers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -280,35 +349,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-entrenamiento" class="md-nav__link">
-    PRE-ENTRENAMIENTO
+  <a href="#introduccion-a-los-transformers" class="md-nav__link">
+    Introducción a los transformers
   </a>
-  
-    <nav class="md-nav" aria-label="PRE-ENTRENAMIENTO">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prediccion-de-la-siguiente-palabra" class="md-nav__link">
-    Predicción de la siguiente palabra
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#el-modelo-de-lenguaje-enmascarado" class="md-nav__link">
-    El modelo de lenguaje enmascarado
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#introduccion-a-los-transformers" class="md-nav__link">
-    Introducción a los transformers
+  <a href="#hugging-face" class="md-nav__link">
+    Hugging Face
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repaso-de-transformers" class="md-nav__link">
+    Repaso de transformers
   </a>
   
 </li>
@@ -329,24 +385,43 @@
                 <h1 id="transformers"><strong>TRANSFORMERS</strong><a class="headerlink" href="#transformers" title="Permanent link">&para;</a></h1>
 <p>Es un tipo de arquitectura basada en redes neuronales que procesan secuencias de palabras y tienen memoria a largo plazo, es decir que logran analizar secuencias muy extensas usando un mecanismo que se llama <strong>atención</strong>. Además, procesan toda la secuencia en paralelo (las redes recurrentes lo hacen en serie).</p>
 <p>Las redes transformers están descritas en el artículo del 2017 llamado "Attention is All You Need".</p>
-<h2 id="pre-entrenamiento"><strong>PRE-ENTRENAMIENTO</strong><a class="headerlink" href="#pre-entrenamiento" title="Permanent link">&para;</a></h2>
-<p>El pre-entrenamiento gnerativo proporciona al modelo un conjunto de datos formador por tokens y los entrena para predecir los tokens que contiene.</p>
-<p>Hay dos formas de pre-entrenamiento:</p>
-<ul>
-<li>Predicción de la siguiente palabra.</li>
-<li>El modelo de lenguaje enmascarado.</li>
-</ul>
-<h3 id="prediccion-de-la-siguiente-palabra"><strong>Predicción de la siguiente palabra</strong><a class="headerlink" href="#prediccion-de-la-siguiente-palabra" title="Permanent link">&para;</a></h3>
-<p>Es una técnica de aprendizaje supervisado que entrena el modelo con los datos de entrada y su correspondiente salida. Permite entrenar el modelo para predecir la siguiente palabra en una oración dado el contexto de las palabras anteriores.</p>
-<p>El modelo aprende a generar texto coherente conociendo las dependencias entre palabras en un contexto más ámplio. Cuantos más ejemplos se ven, mejor se predice la siguiente palabra.</p>
-<p><img alt="imagen" src="imagenes/T1.PNG" /></p>
-<h3 id="el-modelo-de-lenguaje-enmascarado"><strong>El modelo de lenguaje enmascarado</strong><a class="headerlink" href="#el-modelo-de-lenguaje-enmascarado" title="Permanent link">&para;</a></h3>
-<p>El modelo de lenguaje enmascarado entrena un modelo para predecir una palabra que está oculta en una oración.</p>
-<p>Durante el entrenamiento, el modelo recibe como entrada tanto el texto original como el enmascarado.</p>
-<p><img alt="imagen" src="imagenes/T2.PNG" /></p>
+<p>En lugar de tratar todas las palabras de manera uniforme, los mecanismos de atención asignen pesos diferentes a cada palabra de entrada, de forma que las palabras relevantes acaben obteniendo más peso.</p>
+<p>Un <strong>transformer</strong> es un tipo de red neuronal que se basa exclusivamente en mecanismos de atención para procesar datos de secuencia como textos, imágenes o series temporales.</p>
+<p><img alt="imagen" src="imagenes/t1.png" /></p>
+<p>Realmente el <strong>ENCODERS</strong> es un conjunto de encoders, uno encima de otro. Lo mismo sucede con el <strong>DECODERS</strong>.</p>
+<p><img alt="imagen" src="imagenes/t2.PNG" /></p>
+<p>La estructura de los encoders y los decoders es la siguiente:</p>
+<p><img alt="imagen" src="imagenes/t3.PNG" /></p>
+<!--
+## **PRE-ENTRENAMIENTO**
+
+El pre-entrenamiento generativo proporciona al modelo un conjunto de datos formador por tokens y los entrena para predecir los tokens que contiene.
+
+Hay dos formas de pre-entrenamiento:
+
+* Predicción de la siguiente palabra.
+* El modelo de lenguaje enmascarado.
+
+### **Predicción de la siguiente palabra**
+
+Es una técnica de aprendizaje supervisado que entrena el modelo con los datos de entrada y su correspondiente salida. Permite entrenar el modelo para predecir la siguiente palabra en una oración dado el contexto de las palabras anteriores.
+
+El modelo aprende a generar texto coherente conociendo las dependencias entre palabras en un contexto más ámplio. Cuantos más ejemplos se ven, mejor se predice la siguiente palabra.
+
+
+
+### **El modelo de lenguaje enmascarado**
+
+El modelo de lenguaje enmascarado entrena un modelo para predecir una palabra que está oculta en una oración.
+
+Durante el entrenamiento, el modelo recibe como entrada tanto el texto original como el enmascarado.
+
+
+
+-->
 <h2 id="introduccion-a-los-transformers"><strong>Introducción a los transformers</strong><a class="headerlink" href="#introduccion-a-los-transformers" title="Permanent link">&para;</a></h2>
 <p>Los transformers forman parte del pre-entrenamiento y potencian las técnicas que ya conocemos.</p>
-<p>" Attention Is All You Need "</p>
+<p><strong>" Attention Is All You Need "</strong></p>
 <p>La arquitectura de los transformers da importancia a las relaciones entre palabras que no están cerca para generar un texto preciso y coherente.</p>
 <p>Los componentes de la arquitectura transformers es la siguiente:</p>
 <ul>
@@ -354,6 +429,20 @@
 <li>Codificación posicional (Posicional Encoding).</li>
 <li>Codificadores (Encoders).</li>
 <li>Decodificadores (Decoders).</li>
+</ul>
+<h2 id="hugging-face"><strong>Hugging Face</strong><a class="headerlink" href="#hugging-face" title="Permanent link">&para;</a></h2>
+<p>La biblioteca "Transformers" de Hugging Face ofrece una variedad de modelos de lenguaje preentrenados basados en la arquitectura transformer. Algunos de los modelos más populares incluyen BERT, DistilBERT y RoBERTa.</p>
+<p>BERT, que significa "Bidirectional Encoder Representations from Transformers", fue uno de los primeros modelos en aplicar la arquitectura transformer a tareas de PLN. Ofrece variantes como BERT base y BERT large, que difieren en el tamaño y la capacidad de procesamiento.</p>
+<p>DistilBERT es una versión más liviana de BERT que conserva gran parte de su rendimiento y eficacia, pero con menos parámetros y un menor tiempo de entrenamiento. Esta versión es perfecta para aplicaciones donde se requiere una buena relación entre eficiencia y precisión.</p>
+<p>RoBERTa, una versión mejorada de BERT, utiliza técnicas de entrenamiento adicionales para mejorar aún más el rendimiento en tareas de PLN. Al igual que BERT, también está disponible en versiones base y large.</p>
+<p>Estos modelos de lenguaje ofrecen beneficios significativos para una variedad de tareas de PLN, como la clasificación de secuencias, la generación de texto y el análisis de sentimientos. </p>
+<h2 id="repaso-de-transformers"><strong>Repaso de transformers</strong><a class="headerlink" href="#repaso-de-transformers" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La arquitectura de Transformers utiliza Encoders y Decoders.</li>
+<li>El Transformer permite entrenar en paralelo y aprovechar la GPU.</li>
+<li>Utiliza un mecanismo de atención que cruza en memoria “todos contra todos los tokens” y obtiene un score. Los modelos anteriores como LSTM no podían memorizar textos largos ni correr en paralelo.</li>
+<li>El mecanismo de atención puede ser de Self Attention en el Encoder, Cross Attention ó Masked Attention en el Decoder. </li>
+<li>Se utiliza El Input pero también la Salida (el Output del dataset) para entrenar al modelo.</li>
 </ul>
                 
               
@@ -370,6 +459,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="p5.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5. PLN con Redes Neuronales " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              5. PLN con Redes Neuronales 
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

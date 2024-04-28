@@ -13,8 +13,8 @@ nav:
   #   - "4.4. ": "p.md"
   #   - "4.5. ": "p.md"
   - "5. PLN con Redes Neuronales ": "p5.md"
-  #- "4. Transformers": "p6.md"
-  # - "7. ": "p.md"
+  - "6. Transformers": "p6.md"
+  - "7. Transfer Learning": "p7.md"
 
 theme:
   language: es
