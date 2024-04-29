@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p.html">
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p7.html">
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>3. Embedding - Procesamiento del Lenguaje Natural</title>
+        <title>7. Transfer Learning - Procesamiento del Lenguaje Natural</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#embedding" class="md-skip">
+        <a href="#transfer-learning" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. Embedding
+              7. Transfer Learning
             
           </span>
         </div>
@@ -215,99 +215,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          3. Embedding
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="p.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
         3. Embedding
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#caracteristicas-de-los-embeddings" class="md-nav__link">
-    Características de los embeddings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crear-embeddings" class="md-nav__link">
-    Crear embeddings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problemas-para-entrenar-embeddings" class="md-nav__link">
-    Problemas para entrenar embeddings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embeddings-entrenados" class="md-nav__link">
-    Embeddings entrenados
-  </a>
-  
-    <nav class="md-nav" aria-label="Embeddings entrenados">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bert" class="md-nav__link">
-    BERT
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#muse" class="md-nav__link">
-    MUSE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpt" class="md-nav__link">
-    GPT
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -363,11 +275,85 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="p7.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          7. Transfer Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p7.html" class="md-nav__link md-nav__link--active">
         7. Transfer Learning
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ventajas-del-tl" class="md-nav__link">
+    Ventajas del TL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos-gpt" class="md-nav__link">
+    Modelos GPT
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos GPT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fases-de-los-modelos-gpt" class="md-nav__link">
+    Fases de los modelos GPT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptacion-de-los-modelos" class="md-nav__link">
+    Adaptación de los modelos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-preentrenadas" class="md-nav__link">
+    Herramientas preentrenadas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -398,57 +384,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-de-los-embeddings" class="md-nav__link">
-    Características de los embeddings
+  <a href="#ventajas-del-tl" class="md-nav__link">
+    Ventajas del TL
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#crear-embeddings" class="md-nav__link">
-    Crear embeddings
+  <a href="#modelos-gpt" class="md-nav__link">
+    Modelos GPT
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problemas-para-entrenar-embeddings" class="md-nav__link">
-    Problemas para entrenar embeddings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embeddings-entrenados" class="md-nav__link">
-    Embeddings entrenados
-  </a>
-  
-    <nav class="md-nav" aria-label="Embeddings entrenados">
+    <nav class="md-nav" aria-label="Modelos GPT">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bert" class="md-nav__link">
-    BERT
+  <a href="#fases-de-los-modelos-gpt" class="md-nav__link">
+    Fases de los modelos GPT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#muse" class="md-nav__link">
-    MUSE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpt" class="md-nav__link">
-    GPT
+  <a href="#adaptacion-de-los-modelos" class="md-nav__link">
+    Adaptación de los modelos
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-preentrenadas" class="md-nav__link">
+    Herramientas preentrenadas
+  </a>
   
 </li>
       
@@ -465,46 +437,43 @@
               
                 
                 
-                <h1 id="embedding"><strong>EMBEDDING</strong><a class="headerlink" href="#embedding" title="Permanent link">&para;</a></h1>
-<p>Un embedding es una representación numérica de las palabras en un espacio vectorial.</p>
-<p>Cada dimensión del vector, recoge aspectos semánticos o sintácticos de cada palabra.</p>
-<p><img alt="imagen" src="imagenes/emb1.png" /></p>
-<p>La finalidad de los embeddings es que las máquinas comprendan el significado de las palabras de manera efectiva. Son principalmente útiles para tareas como el análisis de sentimientos o la traducción automática.</p>
-<h2 id="caracteristicas-de-los-embeddings"><strong>Características de los embeddings</strong><a class="headerlink" href="#caracteristicas-de-los-embeddings" title="Permanent link">&para;</a></h2>
+                <h1 id="transfer-learning"><strong>TRANSFER LEARNING</strong><a class="headerlink" href="#transfer-learning" title="Permanent link">&para;</a></h1>
+<p>Consiste en aprovechar los conocimientos adquiridos por un modelo entrenado para una determinada tarea para mejorar el rendimiento en otra tarea diferente, es decir que en lugar de entrenar un modelo desde cero para cada tarea, se transfieren los conocimientos previos de otro modelo con el fin de reducir la cantidad de datos necesarios para entrenar.</p>
+<p><img alt="imagen" src="imagenes/t1.png" /></p>
+<h2 id="ventajas-del-tl"><strong>Ventajas del TL</strong><a class="headerlink" href="#ventajas-del-tl" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Captura semántica y sintáctica. Aprende el significado de la palabra y las relaciones sintácticas que tiene.</li>
-<li>Permite la transmisión de conocimiento, es decir se puede entrenar en wikipedia y usarse para cualquier tarea.</li>
-<li>Contextualidad. Permite variar el significado de la palabra según el contexto. Ejemplo: banco.</li>
-<li>Resuelve analogías. Por ejemplo: Madrid es a España como París es a ...</li>
-<li>Las palabras pertenecientes a un mismo campo semántico se encuentran próximas entre ellas.</li>
+<li>Reducción de costes de entrenamiento.</li>
+<li>Mejora del rendimiento con pocos datos.</li>
+<li>Mejoras en la generalización.</li>
 </ul>
-<h2 id="crear-embeddings"><strong>Crear embeddings</strong><a class="headerlink" href="#crear-embeddings" title="Permanent link">&para;</a></h2>
+<h2 id="modelos-gpt"><strong>Modelos GPT</strong><a class="headerlink" href="#modelos-gpt" title="Permanent link">&para;</a></h2>
+<p>Los modelos GPT (Transformers Generativos Preentrenados) son importantes por su capacidad para capturar relaciones entre secuencias de datos. Se preentrenan de manera no supervisada sobre grandes cantidades de datos y una vez preentrenados, estos modelos se toman como base para el desarrollo de distintas tareas.</p>
+<p>Una de las aplicaciones más conocidas es ChatGPT que utiliza Transfer Learning.</p>
+<h3 id="fases-de-los-modelos-gpt"><strong>Fases de los modelos GPT</strong><a class="headerlink" href="#fases-de-los-modelos-gpt" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Partimos de un conjunto de documentos sobre los que vamos a aprender. Ejemplo: Wikipedia</li>
-<li>Utilizamos modelos de IA para comprender el significado de las palabras.</li>
-<li>En principio utilizamos números aleatorios para crear los vectores.</li>
-<li>A medida que el modelo recorre distintos textos, va ajustando estos números para que reflejen las relaciones que existen en el texto.</li>
+<li>
+<p><strong>Preentrenamiento</strong>: El modelo se preentrena poniendo como tarea predecir la siguiente palabra en una secuencia de texto dada una secuencdia de palabras anteriores. De esta manera, va aprendiendo cómo se relacionan las palabras entre ellas tanto de forma semántica como de forma sintáctica.</p>
+</li>
+<li>
+<p><strong>Ajuste de parámetros</strong>: Cuando el modelo ya ha aprendido sobre grandes cantidades de datos, se hace un último ajuste para adaptarlo a una tarea concreta.</p>
+</li>
 </ul>
-<h2 id="problemas-para-entrenar-embeddings"><strong>Problemas para entrenar embeddings</strong><a class="headerlink" href="#problemas-para-entrenar-embeddings" title="Permanent link">&para;</a></h2>
+<h3 id="adaptacion-de-los-modelos"><strong>Adaptación de los modelos</strong><a class="headerlink" href="#adaptacion-de-los-modelos" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Requiere cantidad grandes de datos (wikipedia, libros, etc).</li>
-<li>Necesita tecnologías costosas como GPU's.</li>
-<li>Utilizan mucho tiempo en el entrenamiento (dias, semanas,...).</li>
-<li>El ajuste de parámetros requiere múltiples iteraciones que conlleva costes en tiempo y recursos.</li>
+<li>Selección de modelo base adecuado. (ejm: el idioma).</li>
+<li>Entrenamiento específico con datos relevantes. </li>
+<li>Ajuste de hiperparámetros (para optimizar resultados).</li>
+<li>Evaluación adecuada del modelo (métricas adecuadas).</li>
+<li>Transferencia de conocimiento gradual.</li>
 </ol>
-<h2 id="embeddings-entrenados"><strong>Embeddings entrenados</strong><a class="headerlink" href="#embeddings-entrenados" title="Permanent link">&para;</a></h2>
-<p>Vistos los problemas que puede generar entrenar los embeddings desde cero, la mejor solución es utilizar embeddings que ya estén entrenados para realizar nuevas tareas. </p>
-<p>Los más utilizados son BERT, MUSE y GPT.</p>
-<h3 id="bert"><strong>BERT</strong><a class="headerlink" href="#bert" title="Permanent link">&para;</a></h3>
-<p><strong>BERT</strong> (Representaciones de Codificadores Bidireccional de Transformadores) fue desarrollado por Google en 2018. Se entrenó sobre un corpus compuesto por noticias, libros y artículos de distinto ámbito.
-Utiliza el "mecanismo de atención" que permite entender las palabras y las relaciones entre ellas según el contexto.</p>
-<p><img alt="imagen" src="imagenes/bert.PNG" /></p>
-<h3 id="muse"><strong>MUSE</strong><a class="headerlink" href="#muse" title="Permanent link">&para;</a></h3>
-<p><strong>MUSE</strong> (Embeddings supervisados y no supervisados multilingües) es un embedding en el que se comparten palabras de distintos idiomas. Creado por Facebook en 2018.</p>
-<h3 id="gpt"><strong>GPT</strong><a class="headerlink" href="#gpt" title="Permanent link">&para;</a></h3>
-<p>Los modelos GPT han supuesto una verdadera revolución.<strong>GPT</strong> (Generativos, Preentrenados, Transformers). La última versión que tenemos es GPT4 que ha sido entrenado con un conjunto de datos muy grande.</p>
-<p>GPT es capaz de detectar mayores matices del lenguaje, además de interactuar con interfaces externas para realizar tareas más complejas. </p>
-<p><img alt="imagen" src="imagenes/gpt.PNG" /></p>
+<h2 id="herramientas-preentrenadas"><strong>Herramientas preentrenadas</strong><a class="headerlink" href="#herramientas-preentrenadas" title="Permanent link">&para;</a></h2>
+<p>Hay diferentes herramientas y módulos de Python que ofrencen funcionalidades relacionadas con el PLN. Estas herramientas parten de modelos que ya están entrenados y nos permite poder utilizarlas en otras tareas.</p>
+<p><strong>GENSIN</strong> es una biblioteca de python que realiza tareas como la extracción de temas en grandes volúmenes de texto, cálculo de siilitud de documentos o generación de resúmenes.</p>
+<p><strong>SUMY</strong> también es una biblioteca de python que implementa varios algoritmos para generar resúmenes de textos. Dispone de algoritmos ya entrenados para esta tarea como LexRank, TextRank o LSA.</p>
+<p><strong>BART</strong> es un modelo de lenguaje avanzado de Hugging Face que genera texto, traduce, corrige de forma automática y convierte texto a voz y viceversa.</p>
+<p><strong>BERTSUM</strong> creado a partir de BERT y entrenado específicamente mediante transfer learning para la generación automática de resúmenes.</p>
+<p><strong>TEXTTEASER</strong> es una herramienta de pytnon para la generación automática de resúmenes.</p>
+<p><strong>KEYBERT</strong> implementado por Hugging Face para la realización de tareas de resumen y extracción de palabras clave.</p>
                 
               
               
@@ -524,7 +493,7 @@ Utiliza el "mecanismo de atención" que permite entender las palabras y las rela
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
         
-        <a href="p1.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 2. Librerías para PLN" rel="prev">
+        <a href="p6.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6. Transformers" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -533,26 +502,11 @@ Utiliza el "mecanismo de atención" que permite entender las palabras y las rela
               <span class="md-footer__direction">
                 Anterior
               </span>
-              2. Librerías para PLN
+              6. Transformers
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="p4.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 4. Análisis de sentimiento" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              4. Análisis de sentimiento
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
