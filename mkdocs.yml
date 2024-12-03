@@ -15,6 +15,7 @@ nav:
   - "5. PLN con Redes Neuronales ": "p5.md"
   - "6. Transformers": "p6.md"
   - "7. Transfer Learning": "p7.md"
+  - "8. LLM": "p8.md"
 
 theme:
   language: es
