@@ -5,6 +5,10 @@
 
 El Procesamiento del Lenguaje Natural (Natural Languaje Processing, NLP) es un área de la Inteligencia Artificial (IA) relacionada con el procesamiento, análisis y comprensión de cualquier lenguaje natural con el objetivo de crear sistemas basados en IA que sean capaces de interactuar con seres humanos en el mismo lenguaje de manera escrita o hablada.
 
+El **Test de Turing**, propuesto por Alan Turing en los años 50, es una forma de evaluar si una máquina puede comportarse de manera indistinguible de un humano en una conversación.
+
+Las máquinas aprenden representaciones del lenguaje y del mundo a partir de datos. Este avance ha convertido al NLP en la principal interfaz de comunicación entre humanos y máquinas, acercándonos como nunca al sueño original de Turing.
+
 
 ![imagen](imagenes/PLN1.png)
 
@@ -93,7 +97,7 @@ Encontrar un buen corpus sobre el cual trabajar no suele ser una tarea sencilla;
 
 
 
-### **Bolsa de palabras**
+### **Bolsa de palabras (1990s - 2010s)**
 
 **Bag of Words (BoW)** es una técnica de PLN que busca representar documentos como vectores numéricos. Es un modelo de representación que se basa en la definición de un vector de longitud constante donde se reflejan las ocurrencias de cada uno de los términos existentes a lo largo de las unidades que forma parte del corpus (párrafo, documento, conjunto de documentos). 
 <center>
@@ -155,6 +159,12 @@ Los modelos de n-gramas funcionan de la siguiente manera:
 Por ejemplo si digo "la vida es ", habrá más probabilidades de que a continuación vaya la palabra "bella" que la palabra "fea".
 
 Estos modelos se utilizan en la predicción de texto, generación de texto, transcripción de voz a texto, clasificación de texto.
+
+### **Word2vec y Glove**
+
+En 2013, Google publicó Word2Vec. Por primera vez, las máquinas podían aprender que "Rey - Hombre + Mujer = Reina".
+Significado por cercanía: Las palabras con significados similares se agrupaban en un espacio multidimensional.
+Limitación: Los embeddings eran estáticos. La palabra "banco" tenía el mismo vector si hablábamos de una entidad financiera o de un mueble para sentarse. El contexto seguía siendo el gran enemigo.
 
 
 ## Actividad 1.1
