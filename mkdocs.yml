@@ -19,6 +19,7 @@ nav:
   - "9. LLM": "p8.md"
   - "10. Tools y funciones Calling": "p10.md"
   - "11. Agentes": "p11.md"
+  - "12. Benchmarks": "p12.md"
 
 theme:
   language: es
