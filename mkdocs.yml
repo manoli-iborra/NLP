@@ -17,6 +17,7 @@ nav:
   - "7. Transfer Learning y Fine Tuning": "p7.md"
   - "8. RAG": "p9.md"
   - "9. LLM": "p8.md"
+  - "10. Tools y funciones Calling": "p10.md"
 
 theme:
   language: es
