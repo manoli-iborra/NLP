@@ -1,0 +1,1173 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p1.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="p.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>2. Librerías para PLN - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#librerias-para-pln" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Librerías para PLN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p1.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nltk-natural-language-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NLTK: Natural Language Toolkit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NLTK: Natural Language Toolkit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-en-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos en NLTK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokenizacion-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Tokenización con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stemming-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Stemming con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lematizacion-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Lematización con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-en-spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos en Spacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lematizacion-en-spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lematización en Spacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad 2.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nltk-natural-language-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NLTK: Natural Language Toolkit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NLTK: Natural Language Toolkit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-en-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos en NLTK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokenizacion-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Tokenización con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stemming-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Stemming con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lematizacion-con-nltk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ** Lematización con NLTK**
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-en-spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos en Spacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lematizacion-en-spacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lematización en Spacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad 2.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="librerias-para-pln"><strong>Librerías para PLN</strong><a class="headerlink" href="#librerias-para-pln" title="Permanent link">&para;</a></h1>
+<h2 id="nltk-natural-language-toolkit"><strong>NLTK: Natural Language Toolkit</strong><a class="headerlink" href="#nltk-natural-language-toolkit" title="Permanent link">&para;</a></h2>
+<p>Es una librería de Python utilizada en el procesamiento del lenguaje natural. <strong>NLTK</strong> ofrece potentes capacidades de tokenización que facilitan el procesamiento eficiente de datos textuales.</p>
+<p>La tokenización de palabras de NLTK le permite dividir el texto en palabras individuales o tokens, además contiene corpus de textos y vocabulario organizado como <strong>WordNet</strong>.</p>
+<h3 id="metodos-en-nltk"><strong>Métodos en NLTK</strong><a class="headerlink" href="#metodos-en-nltk" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Nltk.chunk: Utiliza expresiones regulares o árboles de análisis para extraer frases.</li>
+<li>Nltk.tokenize: Divide el texto en frases, palabras o subpalabras, esencial para la estructura del texto.</li>
+<li>Nltk.corpus: Colección de textos que se utiliza como muestra del lenguaje real.</li>
+<li>Nltk.sentiment: Analiza el sentimiento de un texto, como positivo o negativo.</li>
+<li>Nltk.translate: Funciones y algoritmos para trabajar con traducción automática.</li>
+<li>Nltk.stem: Reduce las palabras a su raíz, eliminando sufijos y prefijos.</li>
+<li>Nltk.tag: Asigna partes del discurso a palabras como sustantivos, verbos, adjetivos, ...</li>
+<li>Nltk.inference: Herramienta para trabajar con lógica e inferencia en textos.</li>
+</ul>
+<h3 id="tokenizacion-con-nltk">** Tokenización con NLTK**<a class="headerlink" href="#tokenizacion-con-nltk" title="Permanent link">&para;</a></h3>
+<p>Importamos la librería nltk y descargamos <strong>punkt</strong> que es el tokenizador de NLTK, el algoritmo que lleva a cabo la tokenización de las palabras que pases por parámetro. Divide el texto en frases a través de un modelo no supervisado, esto es que no necesita datos etiquetados para su entrenamiento, obtendrá patrones de los propios datos.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+<span class="linenos" data-linenos="4 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span> <span class="n">word_tokenize</span>
+</code></pre></div>
+Dado un texto, podemos ver los tokens con el siguiente código:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Descargamos las stopwords</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+</code></pre></div>
+Seleccionamos únicamente las stopwords en Español</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">stop_words</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>Tokenización
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Sacamos únicamente las palabras que no están en las stop_words</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">texto_filtrado</span><span class="o">=</span><span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+</code></pre></div>
+<p>¿Qué sucede si no tenemos alguna stopword en mayúsculas? No las reconoce como stopwords por lo tanto lo primero que tenemos que hacer es pasar todo el texto a minúsculas.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">texto</span><span class="o">=</span><span class="n">texto</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="stemming-con-nltk">** Stemming con NLTK**<a class="headerlink" href="#stemming-con-nltk" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;wordnet&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">SnowballStemmer</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Creamos el stemmer en español</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">stemmer</span><span class="o">=</span><span class="n">SnowballStemmer</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">)</span>
+</code></pre></div>
+Probamos con la palabra caminando</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="s1">&#39;caminando&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="lematizacion-con-nltk">** Lematización con NLTK**<a class="headerlink" href="#lematizacion-con-nltk" title="Permanent link">&para;</a></h3>
+<p>Únicamente tiene el diccionario en Inglés.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;wordnet&#39;</span><span class="p">)</span>
+</code></pre></div>
+Inicializamos el tokenizador</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">lematizador</span><span class="o">=</span><span class="n">WordNetLemmatizer</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="n">lematizador</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s2">&quot;running&quot;</span><span class="p">,</span><span class="s2">&quot;v&quot;</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="spacy"><strong>Spacy</strong><a class="headerlink" href="#spacy" title="Permanent link">&para;</a></h2>
+<p>Es otra librería de Python para PLN muy similar a NLTK y su implementación suele ser más rápida y precisa.</p>
+<h3 id="metodos-en-spacy"><strong>Métodos en Spacy</strong><a class="headerlink" href="#metodos-en-spacy" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Spacy.load: Carga un modelo de lenguaje específico. Ejm: nlp=spacy.load('es_core_web_sm).</li>
+<li>nlp: Procesa un texto y ejecuta la cadena de procesamiento del modelo sobre él. </li>
+<li>Doc, Span, Token: Proporciona contenedores para acceder a información sobre el texto como palabras individuales o grupos de palabras.</li>
+<li>Token.lemma_: Obtiene la forma base de una palabra.</li>
+<li>Doc.sents: Divide un documento en frases.</li>
+<li>Doc.ents: Extrae entidades nombradas como personas, organizaciones o lugares.</li>
+</ul>
+<h3 id="lematizacion-en-spacy"><strong>Lematización en Spacy</strong><a class="headerlink" href="#lematizacion-en-spacy" title="Permanent link">&para;</a></h3>
+<p>Instalamos Spacy</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">spacy</span> <span class="o">-</span><span class="n">q</span>
+</code></pre></div>
+Descargamos los paquetes que necesitamos para la lematización.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">es_core_news_sm</span> <span class="o">-</span><span class="n">q</span>
+</code></pre></div>
+Cargar el modelo en español
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">nlp</span><span class="o">=</span><span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;es_core_news_sm&#39;</span><span class="p">)</span>
+</code></pre></div>
+Probamos con texto (cualquier frase)</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">doc</span><span class="o">=</span><span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;texto&#39;</span><span class="p">)</span>
+</code></pre></div>
+Imprimimos el texto y el lema de cada token
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>
+</code></pre></div>
+Podemos mostrar cada token que etiqueta tiene
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="actividad-21">Actividad 2.1<a class="headerlink" href="#actividad-21" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Actividad 2.1</p>
+<p>Crea un notebook dividido en dos partes:</p>
+<ul>
+<li>NLTK</li>
+</ul>
+<ol>
+<li>
+<p>Realiza la tokenización del texto: "El gato y el perro salen a jugar a la calle." Explica cada paso y visualiza los tokens finales.</p>
+</li>
+<li>
+<p>Comprobar el stemming de diferentes tiempos del verbo pasear. Explica el resultado.</p>
+</li>
+<li>
+<p>Haz la lematización de 5 palabras en inglés y explica el resultado.</p>
+</li>
+</ol>
+<ul>
+<li>Spacy</li>
+</ul>
+<ol>
+<li>
+<p>Realiza la lematización de un texto en castellano y explica los resultados.</p>
+</li>
+<li>
+<p>Aplica alguno de los métodos de Spacy.</p>
+</li>
+</ol>
+</div>
+<!--
+### **Análisis semántico con WordNet**
+
+La filosofía de diseño de WordNet se apoya en una idea similar a la del conocido refrán "dime con quién andas y te diré quién eres". Una versión semántica de este refrán podría ser "dime a qué palabras se parece y te diré lo que significa". 
+
+- Es una base de datos léxica usada para el idioma inglés.
+
+- Ayuda a resolver el problema de la sinonimia.
+
+- También dispone en otros idiomas, incluyendo el castellano (euroWordNet)
+
+- Los items léxicos están categorizados en más de 115.000 synsets.
+
+- Un synset consta de un conjunto de sinónimos, una definición de diccionario (glosa) y algunos ejemplos de uso.
+
+- Las relaciones semánticas se representan como redes que las aplicaciones pueden recorrer para encontrar sinónimos, antónimos, ...
+
+https://github.com/jatroyano/notebook-nltk-similitud/blob/master/nltk-similitud.ipynb
+
+-->
+
+<!--
+### **ChatBot**
+
+Importamos las librerías que necesitamos.
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.chat.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chat</span><span class="p">,</span> <span class="n">reflections</span>
+</code></pre></div>
+Definimos una función para una conversión básica.
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">chatbot</span><span class="p">():</span>
+<span class="linenos" data-linenos=" 2 "></span>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hola, soy ChatBot, ¿en qué puedo ayudarte&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 3 "></span>  <span class="n">pairs</span><span class="o">=</span><span class="p">[</span>
+<span class="linenos" data-linenos=" 4 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)mi nombre es(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;Hola, como puedo ayudarte&#39;</span><span class="p">]],</span>
+<span class="linenos" data-linenos=" 5 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)cual es tu nombre(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;mi nombre es chatbot&#39;</span><span class="p">]],</span>
+<span class="linenos" data-linenos=" 6 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)cómo estás(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;Bien, muchas gracias, y tú&#39;</span><span class="p">]],</span>
+<span class="linenos" data-linenos=" 7 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)adios(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;adios, que tengas un buen día&#39;</span><span class="p">]],</span>
+<span class="linenos" data-linenos=" 8 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)finanzas(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;Cuéntame qué quieres saber de eso&#39;</span><span class="p">]],</span>
+<span class="linenos" data-linenos=" 9 "></span>      <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;(.*)empresa(.*)&#39;</span><span class="p">,[</span><span class="s1">&#39;qué quieres saber de la empressa&#39;</span><span class="p">]]</span>
+<span class="linenos" data-linenos="10 "></span>  <span class="p">]</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>  <span class="n">chat</span><span class="o">=</span><span class="n">Chat</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">reflections</span><span class="p">)</span>
+<span class="linenos" data-linenos="13 "></span>  <span class="n">chat</span><span class="o">.</span><span class="n">converse</span><span class="p">()</span>
+</code></pre></div>
+Descargamos el punkt.
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span>  <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span>  <span class="n">chatbot</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+continuar vídeo data&Analytics procesamiento del lenguaje natural, uso de bibliotecas como Nltk y spacy
+
+
+
+### **Fion**
+
+![imagen](imagenes/DP.PNG)
+
+Tras la obtención de los datos desde los orígenes, es el momento de la preparación del dato, para normalizarlo según las necesidades y por supuesto, para optimizar al máximo el dato importado. Este paso es importante además de por el rendimiento en la posterior visualización, sino para garantizar un dato "limpio" y normalizado.
+
+1. Limpieza de datos.
+2. Verificación de datos.
+3. Tipos de datos.
+4. Formateo de los datos numéricos y fecha.
+5. Definir resúmenes en columnas numéricas.
+6. Establecer nombres lógicos para los campos.
+7. Nombres de campo únicos en todo el conjunto de datos.
+8. Cambiar el nombre de los pasos aplicados.
+9. Particionar campos.
+
+
+
+### **Fase 3: Dg**
+
+
+
+
+
+
+### **Fase n**
+
+
+
+
+### **Actividades**
+
+1. Realiza un Chatbot con las siguientes características:
+    - Dar las entradas y las salidas al script.
+    - Debes preguntar algo y el bot debe responder.
+    - Al decirle que no necesitas más su ayuda, el bot se despide.
+
+2. 
+
+!!! Note "Actividades"
+     mnmnmn m nm nm mn mn 
+
+     -->
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

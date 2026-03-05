@@ -1,0 +1,995 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p13.html">
+      
+      
+        <link rel="prev" href="p12.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>13. Entorno de producción - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entorno-de-produccion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              13. Entorno de producción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p13.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-abismo-entre-el-notebook-y-la-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Abismo entre el Notebook y la Producción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-una-api-de-deep-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura de una API de Deep Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-recursos-y-vram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestión de Recursos y VRAM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenerizacion-con-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contenerización con Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-y-control-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad y Control de Acceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacion-y-observabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorización y Observabilidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-ciclo-de-mejora-continua-flywheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Ciclo de Mejora Continua (Flywheel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-6-evaluacion-avanzada-de-sistemas-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica 6: Evaluación avanzada de sistemas NLP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-abismo-entre-el-notebook-y-la-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Abismo entre el Notebook y la Producción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-una-api-de-deep-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura de una API de Deep Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-recursos-y-vram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestión de Recursos y VRAM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenerizacion-con-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contenerización con Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-y-control-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad y Control de Acceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacion-y-observabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorización y Observabilidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-ciclo-de-mejora-continua-flywheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Ciclo de Mejora Continua (Flywheel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-6-evaluacion-avanzada-de-sistemas-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica 6: Evaluación avanzada de sistemas NLP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="entorno-de-produccion"><strong>Entorno de producción</strong><a class="headerlink" href="#entorno-de-produccion" title="Permanent link">&para;</a></h1>
+<h2 id="el-abismo-entre-el-notebook-y-la-produccion"><strong>El Abismo entre el Notebook y la Producción</strong><a class="headerlink" href="#el-abismo-entre-el-notebook-y-la-produccion" title="Permanent link">&para;</a></h2>
+<p>Muchos proyectos de IA fracasan al intentar pasar de un prototipo a un entorno real. En un notebook local, tenemos control absoluto: el script corre en nuestra máquina, solo un usuario lo usa y los datos son previsibles. En producción, el escenario cambia drásticamente y surgen retos críticos:</p>
+<ul>
+<li>
+<p><strong>Concurrencia</strong>: Múltiples usuarios pueden realizar consultas simultáneamente, lo que requiere que el sistema gestione colas y recursos sin bloquearse.</p>
+</li>
+<li>
+<p><strong>Latencia</strong>: Los usuarios esperan respuestas rápidas; segundos extra pueden significar abandono o frustración.</p>
+</li>
+<li>
+<p><strong>Disponibilidad</strong>: El sistema debe estar activo 24/7, sin caídas por mantenimiento o errores inesperados.</p>
+</li>
+<li>
+<p><strong>Seguridad</strong>: Es imprescindible proteger la API para evitar accesos no autorizados o inyecciones de código malicioso que puedan comprometer el modelo o los datos.</p>
+</li>
+</ul>
+<p>El salto del prototipo a la producción exige pensar en estos factores desde el diseño inicial, no como un parche posterior.</p>
+<h2 id="arquitectura-de-una-api-de-deep-learning"><strong>Arquitectura de una API de Deep Learning</strong><a class="headerlink" href="#arquitectura-de-una-api-de-deep-learning" title="Permanent link">&para;</a></h2>
+<p>Para poner nuestro agente en producción, la práctica recomienda exponerlo mediante FastAPI, una solución robusta y flexible para servicios de Machine Learning en Python.</p>
+<p>FastAPI ofrece varias ventajas críticas:</p>
+<ul>
+<li>
+<p>Asincronía (async/await): Permite atender múltiples peticiones simultáneamente sin bloquear el servidor mientras el modelo genera respuestas.
+Validación con Pydantic: Garantiza que los datos de entrada y salida cumplan un contrato estricto, reduciendo errores de tipo y mejorando la fiabilidad.</p>
+</li>
+<li>
+<p>Documentación Automática: Genera una interfaz interactiva (Swagger UI) que facilita probar la API sin necesidad de código cliente adicional.</p>
+</li>
+</ul>
+<p><strong>Gestión del Ciclo de Vida (Lifespan)</strong></p>
+<p>Modelos grandes y sus índices de búsqueda, como FAISS, consumen mucho tiempo y memoria al cargar:</p>
+<p>Singleton Pattern: El modelo y los recursos asociados deben inicializarse una sola vez al arrancar el servidor, evitando recargas innecesarias que consumen tiempo y VRAM.</p>
+<p>Warm-up: Ejecutar inferencias de prueba al inicio permite que los pesos se carguen en la GPU y evita que el primer usuario sufra latencias extra, asegurando una experiencia fluida desde el primer uso.</p>
+<p>Estos pasos aseguran que el servicio sea robusto, eficiente y escalable, condiciones indispensables para entornos de producción.</p>
+<h2 id="gestion-de-recursos-y-vram"><strong>Gestión de Recursos y VRAM</strong><a class="headerlink" href="#gestion-de-recursos-y-vram" title="Permanent link">&para;</a></h2>
+<p>En producción, el factor limitante más crítico para LLMs es la Memoria de Video (VRAM) de la GPU. Los modelos grandes consumen decenas de gigabytes, y sin una gestión cuidadosa, incluso un servidor potente puede quedarse sin recursos, generando errores o ralentizaciones. Por eso es fundamental optimizar tanto la representación del modelo como la manera en que se atienden las consultas.</p>
+<p>La cuantización reduce el tamaño de los modelos y su consumo de VRAM sin sacrificar significativamente la calidad de las respuestas. Esto permite desplegar modelos muy grandes incluso en GPUs con recursos limitados, manteniendo la velocidad y eficiencia.</p>
+<p>La concurrencia es otro desafío clave: si varios usuarios hacen consultas simultáneamente, el sistema debe decidir cómo procesarlas:</p>
+<p>Sequential Processing: Cada petición espera a que la anterior termine, lo que es simple pero muy lento y poco escalable.</p>
+<p>Continuous Batching: Motores de inferencia modernos, como vLLM o Text Generation Inference (TGI), agrupan dinámicamente varias solicitudes en un solo paso de GPU. Esto permite multiplicar el rendimiento sin comprometer la latencia percibida por el usuario.</p>
+<p>El uso combinado de cuantización y batching garantiza que los agentes de LLM sean capaces de atender múltiples usuarios de manera rápida, eficiente y estable en entornos de producción.</p>
+<h2 id="contenerizacion-con-docker"><strong>Contenerización con Docker</strong><a class="headerlink" href="#contenerizacion-con-docker" title="Permanent link">&para;</a></h2>
+<p>Muchas veces lo que funciona en local no funciona en producción. Docker permite empaquetar todo el entorno en una imagen portable y reproducible. Esto asegura que el sistema funcione de forma idéntica en cualquier servidor, reduciendo problemas de dependencias o configuraciones inconsistentes.</p>
+<p>Para que Docker acceda a la GPU es necesario instalar el NVIDIA Container Toolkit, que permite al contenedor comunicarse con los drivers de la tarjeta gráfica del host. Además, la imagen base debe ser compatible con la versión de CUDA instalada en el servidor, garantizando que el modelo pueda aprovechar la aceleración por hardware sin conflictos. </p>
+<p>Una imagen de Docker optimizada para NLP y agentes de LLM suele organizarse en capas:</p>
+<p><strong>Base</strong>: Sistema operativo ligero con Python y CUDA.</p>
+<p><strong>Dependencias</strong>: Instalación de librerías y paquetes del proyecto vía requirements.txt o similares.</p>
+<p><strong>Código del Agente</strong>: Copia del código fuente, scripts de orquestación y adaptadores LoRA.</p>
+<p><strong>Exposición de Puertos</strong>: Configuración del puerto de la API (por ejemplo, 8000) para que pueda recibir solicitudes externas.</p>
+<p>Esta estructura permite reconstruir la imagen rápidamente y mantener consistencia entre entornos de desarrollo, pruebas y producción. </p>
+<h2 id="seguridad-y-control-de-acceso"><strong>Seguridad y Control de Acceso</strong><a class="headerlink" href="#seguridad-y-control-de-acceso" title="Permanent link">&para;</a></h2>
+<p>Los modelos de IA son activos valiosos y costosos; protegerlos es esencial:
+API Keys: Permiten que solo aplicaciones o usuarios autorizados puedan acceder al modelo, evitando uso no controlado.</p>
+<p>Rate Limiting: Limita la cantidad de consultas por usuario por minuto, previniendo sobrecarga del sistema y ataques de denegación de servicio (DoS).</p>
+<p>CORS (Cross-Origin Resource Sharing): Controla qué dominios web pueden interactuar con la API, evitando llamadas maliciosas desde sitios no autorizados.</p>
+<p>Estas medidas combinadas garantizan un entorno seguro, estable y escalable para el despliegue de agentes de LLM en producción.</p>
+<h2 id="monitorizacion-y-observabilidad"><strong>Monitorización y Observabilidad</strong><a class="headerlink" href="#monitorizacion-y-observabilidad" title="Permanent link">&para;</a></h2>
+<p>Tener un modelo desplegado no garantiza que funcione correctamente en todo momento. La monitorización y observabilidad son esenciales para detectar problemas, medir desempeño y alimentar ciclos de mejora continua.</p>
+<p><strong>Logs Estructurados</strong></p>
+<p>Los logs deben ser más que simples impresiones de texto; es necesario registrar información estructurada en formatos como JSON, lo que permite un análisis automático y detallado:</p>
+<p>Tiempo de respuesta (latencia): Cuánto tarda el modelo en generar cada respuesta.</p>
+<p>Tokens generados por segundo: Indicador de rendimiento del motor de inferencia.</p>
+<p>Uso de VRAM: Para prevenir saturaciones de memoria y ajustar cargas de trabajo.</p>
+<p>Feedback del usuario: Si el usuario marca una respuesta como incorrecta o poco útil, se debe registrar la interacción para su posterior re-entrenamiento y mejora del modelo.</p>
+<p><strong>Health Checks</strong></p>
+<p>Endpoints como /health permiten que sistemas de orquestación (por ejemplo, Kubernetes) verifiquen que el modelo está operativo. Estos checks detectan problemas como OOM (Out of Memory) o bloqueos en la inferencia y pueden disparar reinicios automáticos, asegurando disponibilidad constante.</p>
+<h2 id="el-ciclo-de-mejora-continua-flywheel"><strong>El Ciclo de Mejora Continua (Flywheel)</strong><a class="headerlink" href="#el-ciclo-de-mejora-continua-flywheel" title="Permanent link">&para;</a></h2>
+<p>La puesta en producción marca el inicio de un ciclo iterativo de mejora, no el final del proyecto. Este ciclo combina monitorización, curación de errores y reentrenamiento para garantizar evolución constante:</p>
+<ul>
+<li>Producción: El modelo atiende consultas de usuarios reales.</li>
+<li>Monitorización: Se identifican casos donde el modelo duda, falla o genera respuestas incorrectas.</li>
+<li>Curación: Los fallos detectados se revisan y etiquetan manualmente para crear datos de calidad.</li>
+<li>Fine-tuning: El modelo se reentrena con estos datos nuevos para mejorar su desempeño.</li>
+<li>Evaluación: Se ejecuta el benchmark para asegurar que las mejoras no introducen regresiones.</li>
+<li>Despliegue: La versión actualizada se publica en la API, reiniciando el ciclo de mejora continua.</li>
+</ul>
+<p>Este enfoque convierte la producción en un motor de aprendizaje constante, asegurando que el agente se vuelva más confiable, eficiente y adaptado a las necesidades reales de los usuarios.</p>
+<h2 id="practica-6-evaluacion-avanzada-de-sistemas-nlp"><strong>Práctica 6: Evaluación avanzada de sistemas NLP</strong><a class="headerlink" href="#practica-6-evaluacion-avanzada-de-sistemas-nlp" title="Permanent link">&para;</a></h2>
+<p>Objetivo</p>
+<p>El sistema deja de ejecutarse como script aislado y pasa a funcionar como servicio accesible mediante API. El agente se convierte en una aplicación persistente, con control de acceso, configuración externa y trazabilidad en entorno servidor.</p>
+<p><strong>Stack adoptado</strong></p>
+<p>Se expone una API profesional en Python ejecutada con servidor ASGI y validación estricta de esquemas. El foco está en la correcta exposición del modelo, sin abordar aún la contenerización.</p>
+<p><strong>Contrato de servicio</strong></p>
+<p>Se define un endpoint principal para consultas y otro de salud. Las respuestas siguen un esquema estructurado con pregunta, respuesta, fuentes y metadatos, protegidas mediante API Key en cabecera.</p>
+<p><strong>Gestión de recursos</strong></p>
+<p>El agente se instancia una sola vez al iniciar el servidor y permanece en memoria, evitando recargas por petición y permitiendo atender múltiples solicitudes de forma eficiente.</p>
+<p><strong>Integración del agente</strong></p>
+<p>La clase desarrollada en bloques anteriores se reutiliza directamente como objeto persistente dentro del servidor, manteniendo separación entre lógica y capa HTTP.</p>
+<p><strong>Configuración y seguridad</strong></p>
+<p>Las credenciales y parámetros se gestionan mediante variables de entorno, evitando valores sensibles embebidos en el código.</p>
+<p><strong>Pruebas y manejo de errores</strong></p>
+<p>Se incluye un cliente de pruebas que consume la API como aplicación externa. El servidor captura excepciones y evita exponer errores internos al cliente, dejando registro para auditoría.</p>
+<p><strong>Criterio de éxito</strong></p>
+<p>El sistema está listo cuando responde en tiempos razonables, protege el acceso, maneja fallos de forma controlada y mantiene separación clara entre lógica del agente y exposición del servicio.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

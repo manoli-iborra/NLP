@@ -1,0 +1,925 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p10.html">
+      
+      
+        <link rel="prev" href="p8.html">
+      
+      
+        <link rel="next" href="p11.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>10. Tools y funciones Calling - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#el-llm-como-orquestador" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10. Tools y funciones Calling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p10.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mecanica-del-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecánica del Function Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diseno-de-herramientas-seguras-y-deterministas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseño de Herramientas Seguras y Deterministas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diseno-de-herramientas-seguras-y-deterministas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseño de Herramientas Seguras y Deterministas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deteccion-de-ignorancia-el-no-se-como-victoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detección de Ignorancia: El "No sé" como Victoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-y-seguridad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails y Seguridad del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-4-aplicando-tools-y-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica 4: Aplicando Tools y Function Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mecanica-del-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecánica del Function Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diseno-de-herramientas-seguras-y-deterministas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseño de Herramientas Seguras y Deterministas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diseno-de-herramientas-seguras-y-deterministas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseño de Herramientas Seguras y Deterministas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deteccion-de-ignorancia-el-no-se-como-victoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detección de Ignorancia: El "No sé" como Victoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-y-seguridad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails y Seguridad del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-4-aplicando-tools-y-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica 4: Aplicando Tools y Function Calling
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="el-llm-como-orquestador">** El LLM como Orquestador**<a class="headerlink" href="#el-llm-como-orquestador" title="Permanent link">&para;</a></h1>
+<p>Durante mucho tiempo, los LLMs se han entendido como sistemas puramente generativos: reciben texto y producen texto. Sin embargo, en entornos profesionales y productivos, este enfoque se queda corto. Un modelo útil no solo debe redactar bien, sino tomar decisiones, acceder a sistemas externos y coordinar acciones de forma fiable. Aquí surge el concepto del LLM como orquestador, apoyado en Tools (Herramientas) y Function Calling (Llamada a funciones).
+Una Tool es cualquier componente externo al modelo que le permite interactuar con el mundo real o con sistemas especializados. Puede ser una búsqueda web, una consulta a una base de datos SQL, un script de Python, una llamada a una API corporativa o incluso un sistema de gestión de archivos. La clave es que el modelo no ejecuta la lógica, sino que decide cuándo y cómo debe invocarse esa herramienta para obtener información fiable o realizar una acción concreta.
+Este enfoque supone un cambio profundo en el rol del modelo. En lugar de intentar responder a todo usando únicamente su conocimiento interno, el LLM actúa como un sistema de control inteligente que evalúa cada situación antes de actuar. El flujo típico pasa a ser:
+- Analizar la intención del usuario, entendiendo si se trata de una pregunta, una acción o una consulta técnica.
+- Evaluar si dispone de la información necesaria en su contexto o memoria paramétrica.
+- Seleccionar la herramienta adecuada cuando detecta que necesita datos externos o capacidades que no posee.
+- Formatear la petición de forma estructurada y precisa para que la herramienta pueda ejecutarse sin ambigüedades.</p>
+<p>En este modelo, el valor del LLM no reside solo en lo que “sabe”, sino en su capacidad para coordinar recursos, combinar resultados y devolver una respuesta final coherente, verificable y alineada con los sistemas reales de la organización.</p>
+<h2 id="mecanica-del-function-calling"><strong>Mecánica del Function Calling</strong><a class="headerlink" href="#mecanica-del-function-calling" title="Permanent link">&para;</a></h2>
+<p>El Function Calling no implica que el modelo ejecute código directamente. Un LLM es una red neuronal entrenada para generar texto, no un intérprete ni un entorno de ejecución. Su papel se limita a decidir cuándo es necesaria una función y describir cómo debe llamarse, dejando la ejecución real en manos del sistema que lo rodea.
+El proceso técnico se articula en varias fases bien definidas:
+Definición: Se le proporciona al modelo un catálogo de funciones disponibles, descritas de forma estructurada. Cada función incluye su nombre, los parámetros esperados, los tipos de datos y una explicación clara de su propósito, de modo que el modelo pueda razonar sobre cuándo utilizarla.
+Detección: Al analizar el prompt del usuario, el modelo evalúa si puede responder con la información que tiene o si necesita una función externa. Si decide invocarla, no ejecuta nada, sino que genera una salida en un formato acordado, normalmente JSON o etiquetas XML, que describe exactamente la llamada.
+Intercepción: El código que envuelve al modelo, a menudo llamado wrapper u orquestador, detecta ese formato especial. En ese momento se detiene la generación normal, se extraen los parámetros y se ejecuta la función real en el backend o servidor correspondiente.
+Inyección: El resultado devuelto por la función se reintroduce en el contexto del modelo como si fuera un nuevo mensaje de sistema o de herramienta, aportándole información fresca y verificada.
+Respuesta final: Con ese nuevo contexto, el modelo genera la respuesta definitiva para el usuario, ya no basada en suposiciones, sino en los datos reales proporcionados por la función.
+Este mecanismo convierte al LLM en un componente de decisión y coordinación, separando claramente el razonamiento lingüístico de la ejecución técnica.</p>
+<h2 id="diseno-de-herramientas-seguras-y-deterministas"><strong>Diseño de Herramientas Seguras y Deterministas</strong><a class="headerlink" href="#diseno-de-herramientas-seguras-y-deterministas" title="Permanent link">&para;</a></h2>
+<p>Cuando un LLM interactúa con herramientas externas, el principal riesgo no es que falle, sino que invente datos plausibles pero incorrectos, como nombres de archivos inexistentes o parámetros fuera de rango. Por eso, el diseño de herramientas no debe delegarse al modelo, sino seguir principios clásicos de ingeniería de software defensiva, donde el modelo es un actor no confiable que hay que acotar y validar.
+<strong>El Router de Convenios (PDF Routing)</strong>
+En el caso práctico, se introduce un Router como capa intermedia obligatoria. En lugar de permitir búsquedas abiertas sobre todos los PDFs, lo que suele generar ruido y mezclar conceptos de distintos ámbitos, el modelo debe usar una herramienta específica que decide qué documento es el correcto antes de cualquier consulta.
+Uso de description.json: Mantener un archivo de metadatos con la descripción de cada PDF, su dominio y su propósito actúa como un verdadero “ancla de realidad”. El modelo no inventa fuentes, solo puede razonar sobre las que existen y están explícitamente descritas.
+Dominios cerrados: La herramienta debe aceptar únicamente valores predefinidos. Si el modelo solicita un convenio que no está en la lista, el sistema debe responder con un error controlado o un valor explícito como NONE, evitando búsquedas ambiguas o silenciosamente incorrectas.</p>
+<h2 id="diseno-de-herramientas-seguras-y-deterministas_1"><strong>Diseño de Herramientas Seguras y Deterministas</strong><a class="headerlink" href="#diseno-de-herramientas-seguras-y-deterministas_1" title="Permanent link">&para;</a></h2>
+<p>Salidas Estructuradas y Validación por Regex
+Incluso cuando el modelo decide correctamente usar una herramienta, la salida generada puede incluir ruido textual o desviarse del formato esperado. Para evitarlo, es imprescindible añadir capas de validación estrictas antes de ejecutar cualquier acción.
+- <strong>Regex (Expresiones Regulares)</strong>: Permiten extraer de forma precisa el valor relevante, como un nombre de archivo o un identificador, ignorando cualquier texto adicional que el modelo haya generado.
+- <strong>Validación de esquema</strong>: Si la salida esperada es un JSON, debe comprobarse que sea sintácticamente válido y que incluya todos los campos obligatorios con los tipos correctos. Cualquier desviación debe provocar un fallo explícito, no una ejecución parcial.
+En conjunto, estas prácticas convierten las herramientas en componentes deterministas, predecibles y seguras, donde el LLM aporta inteligencia en la decisión, pero el sistema mantiene el control total sobre qué se ejecuta y cómo.</p>
+<h2 id="deteccion-de-ignorancia-el-no-se-como-victoria"><strong>Detección de Ignorancia: El "No sé" como Victoria</strong><a class="headerlink" href="#deteccion-de-ignorancia-el-no-se-como-victoria" title="Permanent link">&para;</a></h2>
+<p>En NLP académico y en sistemas profesionales, una respuesta incorrecta es más dañina que no dar ninguna. Por eso, parte del control de un LLM consiste en enseñarle a reconocer explícitamente sus límites, ya sea mediante Supervised Fine-Tuning (SFT) o a través de prompting cuidadosamente diseñado. Lograr que el modelo diga “no lo sé” en el momento adecuado no es un fallo, sino una señal de madurez del sistema.
+<strong>Criterios de Abstención</strong>
+Para que el modelo sepa cuándo abstenerse, es necesario definir reglas claras en el System Prompt que prioricen la prudencia frente a la especulación. Algunos criterios habituales son:
+- Ambigüedad: Cuando la pregunta puede interpretarse de varias formas y no hay contexto suficiente para desambiguar.
+- Cobertura limitada: Cuando la consulta se refiere a un sector, normativa o dominio que no está cubierto por los documentos disponibles.
+- Contradicciones: Cuando las fuentes recuperadas contienen información incompatible entre sí y no es posible resolverla de forma fiable.</p>
+<p>En estos casos, forzar una respuesta solo aumenta el riesgo de error. Elegir NONE o un “No lo sé” explícito preserva la calidad global del sistema.</p>
+<p><strong>Reducción de la Sobreconfianza</strong></p>
+<p>Los LLMs modernos tienden a ser complacientes, es decir, intentan responder incluso cuando no tienen base suficiente. La integración de herramientas ayuda a combatir esta sobreconfianza al separar claramente el razonamiento lingüístico de la obtención de datos. Si una herramienta de búsqueda, una base documental o un router no devuelve resultados válidos, el modelo dispone de una evidencia objetiva de que no puede responder.
+Este diseño convierte la ignorancia en una decisión informada, no en una carencia, y refuerza la fiabilidad del sistema al evitar respuestas inventadas o poco fundamentadas.</p>
+<h2 id="guardrails-y-seguridad-del-sistema"><strong>Guardrails y Seguridad del Sistema</strong><a class="headerlink" href="#guardrails-y-seguridad-del-sistema" title="Permanent link">&para;</a></h2>
+<p>Dotar a un LLM de acceso a herramientas externas aumenta enormemente su utilidad, pero también amplía la superficie de ataque del sistema. En este contexto, amenazas como la inyección de prompts o el uso indebido de funciones dejan de ser teóricas y pasan a ser riesgos reales. Por ello, es imprescindible rodear al modelo de guardrails claros que limiten su capacidad de acción y protejan la infraestructura.
+- <strong>Validación de argumentos</strong>: El modelo nunca debe tener la capacidad de enviar directamente comandos al sistema operativo, consultas SQL sin filtrar o llamadas a APIs sensibles. Todos los parámetros generados por el LLM deben pasar por capas de saneamiento y validación estrictas que descarten entradas maliciosas o fuera de especificación.
+- <strong>Principio de mínimo privilegio</strong>: Las herramientas expuestas al modelo deben operar con los permisos mínimos necesarios, preferiblemente en modo solo lectura y dentro de un entorno aislado o sandbox. El modelo no necesita acceso completo al sistema, solo a la funcionalidad concreta que resuelve la tarea.
+- <strong>Human-in-the-loop</strong>: En escenarios críticos o de alto impacto, el LLM no debe ejecutar acciones directamente. Su rol se limita a proponer una llamada a la función, que posteriormente es revisada y aprobada por un humano o por un sistema de reglas deterministas antes de su ejecución.</p>
+<p>En conjunto, estos mecanismos transforman al LLM en un componente seguro y controlado, donde la inteligencia está en la toma de decisiones, pero la autoridad final permanece siempre en el sistema que lo gobierna.</p>
+<h2 id="practica-4-aplicando-tools-y-function-calling"><strong>Práctica 4: Aplicando Tools y Function Calling</strong><a class="headerlink" href="#practica-4-aplicando-tools-y-function-calling" title="Permanent link">&para;</a></h2>
+<p>Crear en Python una Tool que seleccione los convenios a los que se dirige la consulta
+El código ha de usar como base el script creado en la práctica anterior.
+Crear archivo description.json, un fichero determinista, auditable y cerrado, que el modelo solo puede leer, no modificar. Ha de tener como keys los nombres de los documentos y como values sus descripciones.
+Se buscan resolver los siguientes problemas del modelo:
+No distingue bien entre convenios
+Recupera chunks semánticamente cercanos pero conceptualmente incorrectos
+Mezcla fuentes
+Para ello haremos una tool decide qué PDF es el más adecuado</p>
+<p>Librerías necesarias:
+json, faiss, torch, re
+from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from peft import PeftModel</p>
+<p>Análisis:
+Casos donde antes fallaba y ahora no responde
+Casos donde elige correctamente el convenio
+Casos ambiguos donde responde NONE
+Casos límite entre hostelería / restauración / turismo
+Qué errores siguen sin resolverse</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

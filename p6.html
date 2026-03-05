@@ -1,0 +1,972 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p6.html">
+      
+      
+        <link rel="prev" href="p5.html">
+      
+      
+        <link rel="next" href="p7.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>6. Transformers - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transformers" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Transformers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p6.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-los-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción a los transformers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción a los transformers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-entrenamiento-y-transfer-learning-2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-entrenamiento y Transfer Learning (2018)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hugging Face
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-era-actual-llms-instrucciones-y-alineacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Era Actual - LLMs, Instrucciones y Alineación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repaso-de-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repaso de transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nlp-y-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NLP y Transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-los-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción a los transformers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción a los transformers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-entrenamiento-y-transfer-learning-2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-entrenamiento y Transfer Learning (2018)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hugging Face
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-era-actual-llms-instrucciones-y-alineacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Era Actual - LLMs, Instrucciones y Alineación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repaso-de-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repaso de transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nlp-y-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NLP y Transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="transformers"><strong>TRANSFORMERS</strong><a class="headerlink" href="#transformers" title="Permanent link">&para;</a></h1>
+<p>Es un tipo de arquitectura basada en redes neuronales que procesan secuencias de palabras y tienen memoria a largo plazo, es decir que logran analizar secuencias muy extensas usando un mecanismo que se llama <strong>atención</strong>. Además, procesan toda la secuencia en paralelo (las redes recurrentes lo hacen en serie).</p>
+<p>Las redes transformers están descritas en el artículo del 2017 llamado "Attention is All You Need".</p>
+<p>En lugar de tratar todas las palabras de manera uniforme, los mecanismos de atención asignen pesos diferentes a cada palabra de entrada, de forma que las palabras relevantes acaben obteniendo más peso.</p>
+<p>El <strong>Mecanismo de Atención</strong> cambia radicalmente, en lugar de leer de izquierda a derecha, el Transformer mira toda la frase a la vez.</p>
+<p>El modelo decide qué otras palabras de la frase son importantes para entender la palabra actual.</p>
+<p>En "El banco central está cerrado porque su edificio es viejo", el modelo sabe que "su" se refiere a "banco" gracias a la contextualización que aporta esta nueva arquitectura.</p>
+<p>Un <strong>transformer</strong> es un tipo de red neuronal que se basa exclusivamente en mecanismos de atención para procesar datos de secuencia como textos, imágenes o series temporales.</p>
+<p>Al procesar todo a la vez, se puede usar la potencia de las GPUs para entrenar con volúmenes de datos masivos. Esto consume mucha potencia y recursos, pero permite un ahorro de tiempo exponencial.</p>
+<p><img alt="imagen" src="imagenes/t1.png" /></p>
+<p>Realmente el <strong>ENCODERS</strong> es un conjunto de encoders, uno encima de otro. Lo mismo sucede con el <strong>DECODERS</strong>.</p>
+<p><img alt="imagen" src="imagenes/t2.PNG" /></p>
+<p>La estructura de los encoders y los decoders es la siguiente:</p>
+<p><img alt="imagen" src="imagenes/t3.PNG" /></p>
+<!--
+## **PRE-ENTRENAMIENTO**
+
+El pre-entrenamiento generativo proporciona al modelo un conjunto de datos formador por tokens y los entrena para predecir los tokens que contiene.
+
+Hay dos formas de pre-entrenamiento:
+
+* Predicción de la siguiente palabra.
+* El modelo de lenguaje enmascarado.
+
+### **Predicción de la siguiente palabra**
+
+Es una técnica de aprendizaje supervisado que entrena el modelo con los datos de entrada y su correspondiente salida. Permite entrenar el modelo para predecir la siguiente palabra en una oración dado el contexto de las palabras anteriores.
+
+El modelo aprende a generar texto coherente conociendo las dependencias entre palabras en un contexto más ámplio. Cuantos más ejemplos se ven, mejor se predice la siguiente palabra.
+
+
+
+### **El modelo de lenguaje enmascarado**
+
+El modelo de lenguaje enmascarado entrena un modelo para predecir una palabra que está oculta en una oración.
+
+Durante el entrenamiento, el modelo recibe como entrada tanto el texto original como el enmascarado.
+
+
+
+-->
+<h2 id="introduccion-a-los-transformers"><strong>Introducción a los transformers</strong><a class="headerlink" href="#introduccion-a-los-transformers" title="Permanent link">&para;</a></h2>
+<p>Los transformers forman parte del pre-entrenamiento y potencian las técnicas que ya conocemos.</p>
+<p><strong>" Attention Is All You Need "</strong></p>
+<p>La arquitectura de los transformers da importancia a las relaciones entre palabras que no están cerca para generar un texto preciso y coherente.</p>
+<p>Los componentes de la arquitectura transformers es la siguiente:</p>
+<ul>
+<li>Preprocesamiento.</li>
+<li>Codificación posicional (Posicional Encoding).</li>
+<li>Codificadores (Encoders).</li>
+<li>Decodificadores (Decoders).</li>
+</ul>
+<h3 id="pre-entrenamiento-y-transfer-learning-2018"><strong>Pre-entrenamiento y Transfer Learning (2018)</strong><a class="headerlink" href="#pre-entrenamiento-y-transfer-learning-2018" title="Permanent link">&para;</a></h3>
+<p>A partir de 2018, la tendencia cambió a entrenar modelos gigantes de forma genérica y luego ajustarlos para tareas específicas.</p>
+<p>BERT (Google): 
+Especialista en entender (clasificación, extracción).</p>
+<p>GPT (OpenAI):
+Especialista en generar (completar texto).</p>
+<p>Aquí descubrimos que, al escalar los modelos a miles de millones de parámetros, empezaban a aparecer capacidades emergentes como razonamiento lógico, capacidad de programar y traducción sin haber sido entrenados específicamente para ello.</p>
+<h2 id="hugging-face"><strong>Hugging Face</strong><a class="headerlink" href="#hugging-face" title="Permanent link">&para;</a></h2>
+<p>La biblioteca "Transformers" de Hugging Face ofrece una variedad de modelos de lenguaje preentrenados basados en la arquitectura transformer. Algunos de los modelos más populares incluyen BERT, DistilBERT y RoBERTa.</p>
+<p>BERT, que significa "Bidirectional Encoder Representations from Transformers", fue uno de los primeros modelos en aplicar la arquitectura transformer a tareas de PLN. Ofrece variantes como BERT base y BERT large, que difieren en el tamaño y la capacidad de procesamiento.</p>
+<p>DistilBERT es una versión más liviana de BERT que conserva gran parte de su rendimiento y eficacia, pero con menos parámetros y un menor tiempo de entrenamiento. Esta versión es perfecta para aplicaciones donde se requiere una buena relación entre eficiencia y precisión.</p>
+<p>RoBERTa, una versión mejorada de BERT, utiliza técnicas de entrenamiento adicionales para mejorar aún más el rendimiento en tareas de PLN. Al igual que BERT, también está disponible en versiones base y large.</p>
+<p>Estos modelos de lenguaje ofrecen beneficios significativos para una variedad de tareas de PLN, como la clasificación de secuencias, la generación de texto y el análisis de sentimientos. </p>
+<h2 id="la-era-actual-llms-instrucciones-y-alineacion"><strong>La Era Actual - LLMs, Instrucciones y Alineación</strong><a class="headerlink" href="#la-era-actual-llms-instrucciones-y-alineacion" title="Permanent link">&para;</a></h2>
+<p>Los modelos actuales (como Gemma-2 que usaremos en este curso) no solo predicen la siguiente palabra; han sido "alineados" mediante SFT (Supervised Fine-Tuning) y RLHF (Reinforcement Learning from Human Feedback) para actuar como asistentes.</p>
+<p>Hoy en día no nos conformamos con que el modelo "hable".
+Exigimos:</p>
+<ul>
+<li>
+<p>Fiabilidad: Que no invente (evitar alucinaciones).</p>
+</li>
+<li>
+<p>Actualización: Que consulte fuentes externas (RAG).</p>
+</li>
+<li>
+<p>Acción: Que ejecute herramientas (Tools/Function Calling).</p>
+</li>
+<li>
+<p>Autonomía: Que razone pasos complejos (Agentes).</p>
+</li>
+</ul>
+<p>¿Es la IA una herramienta o un enemigo?
+¿Cómo está impactanto la IA en la vida de las personas?</p>
+<h2 id="repaso-de-transformers"><strong>Repaso de transformers</strong><a class="headerlink" href="#repaso-de-transformers" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La arquitectura de Transformers utiliza Encoders y Decoders.</li>
+<li>El Transformer permite entrenar en paralelo y aprovechar la GPU.</li>
+<li>Utiliza un mecanismo de atención que cruza en memoria “todos contra todos los tokens” y obtiene un score. Los modelos anteriores como LSTM no podían memorizar textos largos ni correr en paralelo.</li>
+<li>El mecanismo de atención puede ser de Self Attention en el Encoder, Cross Attention ó Masked Attention en el Decoder. </li>
+<li>Se utiliza El Input pero también la Salida (el Output del dataset) para entrenar al modelo.</li>
+</ul>
+<h2 id="nlp-y-transformers"><strong>NLP y Transformers</strong><a class="headerlink" href="#nlp-y-transformers" title="Permanent link">&para;</a></h2>
+<p><img alt="imagen" src="imagenes/tran1.png" />
+<img alt="imagen" src="imagenes/tran2.png" />
+<img alt="imagen" src="imagenes/tran3.png" />
+<img alt="imagen" src="imagenes/tran4.png" />
+<img alt="imagen" src="imagenes/tran5.png" />
+<img alt="imagen" src="imagenes/tran6.png" />
+<img alt="imagen" src="imagenes/tran7.png" />
+<img alt="imagen" src="imagenes/tran8.png" /></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

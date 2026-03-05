@@ -1,0 +1,763 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p7.html">
+      
+      
+        <link rel="prev" href="p6.html">
+      
+      
+        <link rel="next" href="p9.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>7. Transfer Learning y Fine Tuning - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transfer-learning" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Transfer Learning y Fine Tuning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="p7.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="transfer-learning"><strong>TRANSFER LEARNING</strong><a class="headerlink" href="#transfer-learning" title="Permanent link">&para;</a></h1>
+<p>las técnicas de Aprendizaje Transferible (Transfer Learning) y el y Ajuste Fino (Fine Tuning) se presentan como innovaciones clave para la mejora de los modelos de Inteligencia Artificial.</p>
+<p>TL consiste en aprovechar los conocimientos adquiridos por un modelo entrenado para una determinada tarea para mejorar el rendimiento en otra tarea diferente, es decir que en lugar de entrenar un modelo desde cero para cada tarea, se transfieren los conocimientos previos de otro modelo con el fin de reducir la cantidad de datos necesarios para entrenar.</p>
+<p>TL implica congelar los pesos del modelo previamente entrenado y solo entrenar las nuevas capas, el fine tuning va un paso más allá al permitir que se actualicen las capas previamente entrenadas.</p>
+<p><img alt="imagen" src="imagenes/t1.png" /></p>
+<h1 id="fine-tuning"><strong>FINE-TUNING</strong><a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h1>
+<p>El ajuste fino se utiliza para:</p>
+<ul>
+<li>Dominio del lenguaje: Aprende terminología técnica o legal muy específica que no estaba en el pre-entrenamiento (Ej: que conteste en un formato más formal si estamos en un entorno de abogacía).</li>
+<li>Formato y estructura: forzar al modelo a responder siempre en un JSON específico, o con un tono académico extremadamente riguroso.</li>
+<li>Restricciones de comportamiento: enseñar al modelo a ser extremadamente precavido y a decir "No lo sé" con mayor frecuencia.</li>
+</ul>
+<p>Ciclo de vida del modelo:</p>
+<ul>
+<li><strong>Pre-training (Pre-entrenamiento)</strong>: El modelo aprende a predecir el siguiente token a partir de una cantidad masiva de datos. Aquí adquiere "conocimiento del mundo" y gramática, pero no sabe seguir instrucciones. Es un completador de frases.</li>
+<li><strong>SFT (Supervised Fine-Tuning)</strong>: Es el proceso de entrenar al modelo en un dataset más pequeño y curado de pares Instrucción -&gt; Respuesta. Aquí es donde el modelo aprende el formato de chat y a obedecer órdenes.</li>
+<li><strong>Alignment (Alineación - RLHF/DPO)</strong>: Se ajusta el modelo para que sus respuestas sean seguras, útiles y honestas, basándose en preferencias humanas.</li>
+</ul>
+<h2 id="peft-parameter-efficient-fine-tuning"><strong>PEFT: Parameter-Efficient Fine-Tuning</strong><a class="headerlink" href="#peft-parameter-efficient-fine-tuning" title="Permanent link">&para;</a></h2>
+<p>Es un tipo de Fine Tuning. Entrenar un modelo grande desde cero o incluso hacer un fine-tuning completo es extremadamente costoso. Por ejemplo, un modelo de 9.000 millones de parámetros (9B) requeriría actualizar 9.000 millones de números en cada paso, lo que implica cientos de gigabytes de VRAM y hardware muy especializado. PEFT surge como la solución: permite adaptar modelos gigantes a tareas específicas sin necesidad de actualizar todos sus parámetros, reduciendo enormemente recursos y tiempo de entrenamiento.
+<strong>LoRA (Low-Rank Adaptation)</strong>
+LoRA es la técnica más utilizada dentro de PEFT y se basa en la idea de que para adaptar un modelo a una tarea concreta no es necesario modificar todos sus parámetros, sino que los ajustes importantes pueden representarse mediante matrices mucho más pequeñas y sencillas, ocupando un espacio reducido dentro de la red. Modifica capas más pequeñas, congela la matriz principal y añade dos matrices nuevas mediante una serie de operaciones.</p>
+<p><strong>Cómo funciona</strong>:En lugar de modificar la matriz de pesos original 𝑊, que es enorme, LoRA la congela y añade dos matrices pequeñas, 𝐴y 𝐵, que sí se entrenan. La actualización final del modelo se calcula como: 
+𝑊_𝑓𝑖𝑛𝑎𝑙=𝑊+(𝐴×𝐵)
+Esto significa que solo entrenamos un pequeño subconjunto de parámetros, manteniendo intacta la base del modelo.
+<strong>Ventajas de LoRA</strong>:
+Reduce hasta un 99% los parámetros que se deben entrenar.
+Disminuye drásticamente el consumo de memoria durante el entrenamiento.
+Los adaptadores resultantes son muy ligeros, lo que facilita su almacenamiento y distribución.</p>
+<p><strong>QLoRA: Cuantización + LoRA</strong></p>
+<p>QLoRA lleva la eficiencia aún más lejos, combinando cuantización con LoRA y otras optimizaciones de memoria. Sus principales innovaciones son:
+- <strong>4-bit NormalFloat (NF4)</strong>: Comprime los pesos del modelo original a solo 4 bits, manteniendo casi toda la precisión (la precisión en el modelo).
+- <strong>Double Quantization</strong>: Comprime también las constantes de cuantización, reduciendo aún más el tamaño (Ej.: float32 a float16).
+- <strong>Paged Optimizers</strong>: Gestiona los picos de memoria usando la RAM del sistema cuando la VRAM se llena, evitando errores de “Out of Memory”.</p>
+<p>Resultado: Gracias a QLoRA, es posible entrenar modelos de 9B o incluso 13B en una sola GPU de consumo, como una RTX 3090 o 4090, haciendo que el fine-tuning avanzado sea accesible para laboratorios pequeños y desarrolladores individuales.</p>
+<h2 id="hiperparametros-criticos-en-el-entrenamiento"><strong>Hiperparámetros Críticos en el Entrenamiento</strong><a class="headerlink" href="#hiperparametros-criticos-en-el-entrenamiento" title="Permanent link">&para;</a></h2>
+<p>Para que el fine-tuning funcione de manera eficiente, es necesario ajustar cuidadosamente varios parámetros clave, como si estuviéramos regulando los “pomos” de un motor complejo. Cada uno afecta tanto a la calidad del aprendizaje como al uso de memoria y tiempo de entrenamiento.
+- <strong>Rank (r)</strong>: Determina el tamaño de las matrices 𝑨 y 𝑩 en LoRA. Valores típicos: 8, 16 o 32. Un r más alto permite que el modelo capture patrones más complejos, pero también aumenta el consumo de memoria y tiempo de entrenamiento.
+- <strong>LoRA Alpha (𝛼)</strong>: Factor de escala que multiplica los ajustes aprendidos por 𝐴×𝐵. Normalmente se fija en el doble del Rank (por ejemplo, si 𝑟=16, 𝛼=32). Controla la intensidad de las actualizaciones sin desestabilizar el modelo. Le da el peso final dentro de la matriz original. 
+- <strong>Learning Rate (Tasa de aprendizaje)</strong>: Indica la velocidad a la que el modelo ajusta sus parámetros. En SFT suele ser mucho más baja que en el preentrenamiento completo (ej. 2×10^(−4)). Si es demasiado alta, el modelo puede sufrir Catastrophic Forgetting (olvido catastrófico), es decir, olvidar conocimientos previos.
+- <strong>Epochs (Épocas)</strong>: Número de veces que el modelo ve todo el dataset. En SFT, 1–3 épocas suelen ser suficientes; más allá de eso se produce overfitting, donde el modelo memoriza ejemplos en lugar de aprender a generalizar. </p>
+<p>Ajustar estos hiperparámetros correctamente permite que el modelo aprenda de manera estable y eficiente, sin desperdiciar recursos ni perder habilidades previas.</p>
+<h2 id="evaluacion-del-entrenamiento"><strong>Evaluación del Entrenamiento</strong><a class="headerlink" href="#evaluacion-del-entrenamiento" title="Permanent link">&para;</a></h2>
+<p>Medir la mejora de un modelo no se limita a mirar cifras. Es un proceso que combina métricas cuantitativas y cualitativas.
+- <strong>Train/Eval Loss</strong>: La curva de pérdida debería descender durante el entrenamiento. Si la pérdida de validación sube mientras la de entrenamiento baja, indica overfitting.
+- <strong>Catastrophic Forgetting</strong>: Es crucial comprobar que el modelo no ha perdido habilidades básicas. Por ejemplo, después de entrenarlo debe seguir sabiendo sumar, responder saludos o escribir texto general. Tenemos una batería de preguntas que pasamos antes y después para comprobar que no ha desaprendido.
+- <strong>Benchmark Cualitativo</strong>: Comparar respuestas del modelo base y del modelo fine-tuneado ante preguntas diseñadas para evaluar comprensión, coherencia y exactitud. Esto incluye preguntas “trampa” o ejemplos de edge cases, que permiten ver si el modelo realmente aprendió a razonar y no solo a memorizar.</p>
+<p>Estas evaluaciones garantizan que el modelo no solo reproduce los ejemplos de entrenamiento, sino que generaliza correctamente a nuevas situaciones.</p>
+<h2 id="ventajas-del-tl"><strong>Ventajas del TL</strong><a class="headerlink" href="#ventajas-del-tl" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Reducción de costes de entrenamiento.</li>
+<li>Mejora del rendimiento con pocos datos.</li>
+<li>Mejoras en la generalización.</li>
+</ul>
+<h2 id="modelos-gpt"><strong>Modelos GPT</strong><a class="headerlink" href="#modelos-gpt" title="Permanent link">&para;</a></h2>
+<p>Los modelos GPT (Transformers Generativos Preentrenados) son importantes por su capacidad para capturar relaciones entre secuencias de datos. Se preentrenan de manera no supervisada sobre grandes cantidades de datos y una vez preentrenados, estos modelos se toman como base para el desarrollo de distintas tareas.</p>
+<p>Una de las aplicaciones más conocidas es ChatGPT que utiliza Transfer Learning.</p>
+<h3 id="fases-de-los-modelos-gpt"><strong>Fases de los modelos GPT</strong><a class="headerlink" href="#fases-de-los-modelos-gpt" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Preentrenamiento</strong>: El modelo se preentrena poniendo como tarea predecir la siguiente palabra en una secuencia de texto dada una secuencdia de palabras anteriores. De esta manera, va aprendiendo cómo se relacionan las palabras entre ellas tanto de forma semántica como de forma sintáctica.</p>
+</li>
+<li>
+<p><strong>Ajuste de parámetros</strong>: Cuando el modelo ya ha aprendido sobre grandes cantidades de datos, se hace un último ajuste para adaptarlo a una tarea concreta.</p>
+</li>
+</ul>
+<h3 id="adaptacion-de-los-modelos"><strong>Adaptación de los modelos</strong><a class="headerlink" href="#adaptacion-de-los-modelos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Selección de modelo base adecuado. (ejm: el idioma).</li>
+<li>Entrenamiento específico con datos relevantes. </li>
+<li>Ajuste de hiperparámetros (para optimizar resultados).</li>
+<li>Evaluación adecuada del modelo (métricas adecuadas).</li>
+<li>Transferencia de conocimiento gradual.</li>
+</ol>
+<h2 id="herramientas-preentrenadas"><strong>Herramientas preentrenadas</strong><a class="headerlink" href="#herramientas-preentrenadas" title="Permanent link">&para;</a></h2>
+<p>Hay diferentes herramientas y módulos de Python que ofrencen funcionalidades relacionadas con el PLN. Estas herramientas parten de modelos que ya están entrenados y nos permite poder utilizarlas en otras tareas.</p>
+<p><strong>GENSIN</strong> es una biblioteca de python que realiza tareas como la extracción de temas en grandes volúmenes de texto, cálculo de siilitud de documentos o generación de resúmenes.</p>
+<p><strong>SUMY</strong> también es una biblioteca de python que implementa varios algoritmos para generar resúmenes de textos. Dispone de algoritmos ya entrenados para esta tarea como LexRank, TextRank o LSA.</p>
+<p><strong>BART</strong> es un modelo de lenguaje avanzado de Hugging Face que genera texto, traduce, corrige de forma automática y convierte texto a voz y viceversa.</p>
+<p><strong>BERTSUM</strong> creado a partir de BERT y entrenado específicamente mediante transfer learning para la generación automática de resúmenes.</p>
+<p><strong>TEXTTEASER</strong> es una herramienta de pytnon para la generación automática de resúmenes.</p>
+<p><strong>KEYBERT</strong> implementado por Hugging Face para la realización de tareas de resumen y extracción de palabras clave.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

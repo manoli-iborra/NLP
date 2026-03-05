@@ -1,0 +1,892 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p11.html">
+      
+      
+        <link rel="prev" href="p10.html">
+      
+      
+        <link rel="next" href="p12.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>11. Agentes - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agentes" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11. Agentes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p11.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitecturas-de-razonamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitecturas de Razonamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentes-criticos-del-agente-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes Críticos del Agente del Curso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-bucle-de-control-y-el-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Bucle de Control y el Manejo de Errores
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitecturas-de-razonamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitecturas de Razonamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentes-criticos-del-agente-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes Críticos del Agente del Curso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-bucle-de-control-y-el-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Bucle de Control y el Manejo de Errores
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="agentes"><strong>AGENTES</strong><a class="headerlink" href="#agentes" title="Permanent link">&para;</a></h1>
+<p>Hasta este punto, los sistemas descritos funcionan de forma lineal o reactiva: el usuario lanza una consulta, el sistema recupera información y genera una respuesta en un único recorrido. Este enfoque es válido para tareas simples, pero se queda corto cuando el problema requiere varios pasos, comprobaciones intermedias o decisiones adaptativas. Un Agente rompe esa linealidad y añade capacidad de razonamiento iterativo.</p>
+<p>Un <strong>Agente</strong> es un sistema en el que el LLM no se limita a generar texto, sino que actúa como un motor de decisión que opera dentro de un bucle de retroalimentación. El modelo puede planificar una acción, ejecutar una herramienta, observar el resultado y, en función de esa observación, decidir el siguiente paso. Este ciclo se repite hasta que el agente considera que ha alcanzado un estado suficiente para producir una respuesta final o completar la tarea.</p>
+<p><strong>Diferencia entre Pipeline y Agente</strong></p>
+<p><strong>Pipeline (Flujo rígido)</strong>: Sigue una secuencia predefinida del tipo Pregunta → Clasificación → RAG → Respuesta. Cada etapa depende estrictamente de la anterior, por lo que un error temprano, como una mala clasificación, se propaga y compromete todo el resultado. Es simple, predecible y fácil de mantener, pero poco flexible.</p>
+<p><strong>Agente (Flujo dinámico)</strong>: Funciona como un proceso adaptativo: 
+Pregunta → ¿Qué herramientas necesito? → [Ejecuta Tool A] → ¿Es suficiente? → No, necesito Tool B → [Ejecuta Tool B] → ¿Es suficiente? → Sí → Respuesta. </p>
+<p>El modelo evalúa continuamente el estado del problema y ajusta su estrategia, lo que le permite manejar tareas complejas, ambiguas o abiertas de forma más robusta.</p>
+<p>Los agentes están en desarrollo, lo que denominamos agentes independientes.</p>
+<h2 id="arquitecturas-de-razonamiento"><strong>Arquitecturas de Razonamiento</strong><a class="headerlink" href="#arquitecturas-de-razonamiento" title="Permanent link">&para;</a></h2>
+<p>Para que un agente basado en LLMs sea realmente eficaz, no basta con que tenga acceso a herramientas. Es necesario que siga una metodología explícita de razonamiento, que le permita descomponer problemas, evaluar resultados intermedios y decidir el siguiente paso de forma coherente. Estas metodologías definen cómo “piensa” el agente y condicionan directamente su fiabilidad y capacidad para resolver tareas complejas.</p>
+<p><strong>Chain of Thought (CoT) – Cadena de Pensamiento</strong>:</p>
+<p>La Chain of Thought consiste en inducir al modelo a razonar en varios pasos antes de producir la respuesta final. En lugar de saltar directamente a una conclusión, el modelo genera razonamientos intermedios que conectan la pregunta con la respuesta. Este enfoque ha demostrado reducir de forma significativa los errores en problemas lógicos, matemáticos o de múltiples condiciones. En el contexto de un agente, el CoT aparece cuando el modelo justifica internamente por qué elige una herramienta, descarta otra o considera que aún no tiene información suficiente.</p>
+<p><strong>ReAct (Reasoning + Acting)</strong></p>
+<p>ReAct combina razonamiento y acción en un único bucle iterativo, y se considera el enfoque más robusto para agentes prácticos. El modelo alterna entre pensar y actuar, ajustando su estrategia en función de lo que va observando. El ciclo típico es:</p>
+<ul>
+<li>
+<p>Thought (Pensamiento): El modelo analiza el estado actual del problema y decide el siguiente paso.</p>
+</li>
+<li>
+<p>Action (Acción): Selecciona y ejecuta una herramienta concreta.</p>
+</li>
+<li>
+<p>Observation (Observación): Recibe el resultado de la acción ejecutada.</p>
+</li>
+<li>
+<p>Repetición: Con esa nueva información, vuelve a razonar y decide si continuar o finalizar.</p>
+</li>
+</ul>
+<p>Este enfoque permite al agente corregir errores, explorar alternativas y adaptarse dinámicamente a resultados inesperados.</p>
+<p><strong>Plan-and-Execute</strong></p>
+<p>En problemas especialmente largos o complejos, razonar paso a paso puede no ser suficiente. En estos casos, Plan-and-Execute separa el proceso en dos fases claras: primero, el agente construye un plan global con todos los pasos necesarios para resolver la tarea; después, ejecuta cada paso de forma secuencial. Esta estrategia reduce el riesgo de desviaciones, mantiene la coherencia a largo plazo y es especialmente útil en tareas con dependencias claras entre pasos, como flujos de trabajo técnicos o procesos empresariales complejos.</p>
+<h2 id="componentes-criticos-del-agente-del-curso"><strong>Componentes Críticos del Agente del Curso</strong><a class="headerlink" href="#componentes-criticos-del-agente-del-curso" title="Permanent link">&para;</a></h2>
+<p>En la práctica del curso, el agente se enfrenta a un dominio especialmente complejo: la normativa laboral, caracterizada por múltiples fuentes, excepciones y comparativas entre convenios. Para manejar esta complejidad de forma fiable, el agente incorpora varios componentes de orquestación que van más allá de un simple flujo de pregunta y respuesta.</p>
+<p><strong>Selección Multi-Fuente (Multi-PDF Routing)</strong></p>
+<p>A diferencia de escenarios más simples, donde una pregunta se resuelve consultando un único documento, aquí el agente debe detectar cuándo una consulta requiere comparar o cruzar información de varias fuentes. Por ejemplo, al preguntar por diferencias salariales entre dos convenios, no basta con recuperar un solo PDF.</p>
+<p>En estos casos, el agente debe identificar todas las fuentes relevantes, generar una lista de herramientas a invocar y coordinar su ejecución. Posteriormente, tiene que agregar y normalizar los resultados, asegurándose de que la comparación se basa en fragmentos equivalentes y coherentes entre documentos distintos.</p>
+<p><strong>Evaluación de Suficiencia del Contexto</strong></p>
+<p>Un agente robusto no responde siempre; también sabe cuándo debe detenerse. Para ello, se implementa una lógica que evalúa tanto la cantidad como la calidad del contexto recuperado. No todos los textos devueltos por un sistema de búsqueda son útiles ni relevantes.</p>
+<p>Si el contexto es insuficiente, por ejemplo fragmentos demasiado cortos, irrelevantes o inconexos, el agente aborta la generación de la respuesta. Este mecanismo actúa como una barrera de seguridad frente a las alucinaciones, priorizando la ausencia de respuesta antes que una respuesta incorrecta.</p>
+<p><strong>Memoria y Estado</strong></p>
+<p>Para razonar de forma coherente, el agente necesita mantener un estado interno que registre sus acciones y decisiones. Esto se articula en dos niveles complementarios.</p>
+<p>La memoria de corto plazo almacena los resultados de las herramientas ejecutadas durante el turno actual, permitiendo al agente reutilizar información sin repetir llamadas innecesarias.</p>
+<p>La trazabilidad se materializa en un registro detallado de cada paso del razonamiento, de modo que un auditor humano pueda reconstruir qué herramientas se usaron, qué información se obtuvo y por qué se tomó cada decisión.</p>
+<p>En conjunto, estos componentes convierten al agente en un sistema controlado, explicable y apto para entornos profesionales donde la fiabilidad es tan importante como la respuesta final.</p>
+<h2 id="el-bucle-de-control-y-el-manejo-de-errores"><strong>El Bucle de Control y el Manejo de Errores</strong><a class="headerlink" href="#el-bucle-de-control-y-el-manejo-de-errores" title="Permanent link">&para;</a></h2>
+<p>Un agente sin mecanismos de control es un riesgo operativo. En un entorno de producción, donde el agente actúa de forma semiautónoma, es imprescindible introducir salvaguardas explícitas que limiten su comportamiento y eviten respuestas incorrectas o ciclos ineficientes.</p>
+<p>El límite de iteraciones impide que el agente quede atrapado en bucles infinitos, como repetir búsquedas infructuosas sobre la misma fuente. De este modo, se garantiza un coste computacional acotado y un comportamiento predecible.</p>
+<p>La validación de salida actúa como una última capa de seguridad antes de mostrar la respuesta al usuario. Puede consistir en reglas o scripts que detecten inconsistencias, afirmaciones prohibidas o respuestas excesivamente largas que, en realidad, no aportan información verificable.</p>
+<p>El fallback estratégico ofrece una vía de escape controlada. Si el agente no logra determinar la fuente correcta o falla en su razonamiento principal, el sistema da un paso atrás y ejecuta una estrategia más general, como una búsqueda amplia en todos los documentos disponibles, evitando así el bloqueo total del proceso.</p>
+<p><strong>Razonamiento Multi-fuente y Síntesis</strong></p>
+<p>El mayor desafío de un agente NLP no es recuperar información, sino sintetizarla correctamente. Cuando intervienen múltiples convenios o documentos, el agente no puede limitarse a concatenar fragmentos de texto sin contexto.</p>
+<p>Debe analizar posibles contradicciones entre fuentes, detectar matices y excepciones, y estructurar la respuesta de acuerdo con la intención del usuario, por ejemplo, presentando comparativas claras cuando así se solicita. Además, es fundamental mantener la atribución de la información, indicando de forma comprensible qué datos proceden de cada PDF. Esta capacidad de síntesis es lo que transforma datos dispersos en conocimiento útil.</p>
+<p><strong>Ética y Responsabilidad del Agente</strong></p>
+<p>Otorgar autonomía a un agente implica asumir una responsabilidad técnica y ética. En dominios sensibles como el legal o académico, la fiabilidad y la explicabilidad son tan importantes como la respuesta en sí.</p>
+<p>La transparencia exige que el usuario sepa en todo momento que interactúa con un sistema que toma decisiones de búsqueda y razonamiento.</p>
+<p>La auditoría convierte los registros de ejecución en algo más que una herramienta de depuración: son la evidencia de cómo el sistema llegó a una conclusión concreta, un requisito clave en entornos regulados.</p>
+<p>La abstención, lejos de ser un fallo, es una respuesta correcta cuando no existe información suficiente o fiable. Un agente bien diseñado debe priorizar decir “no puedo encontrar evidencia suficiente en los documentos proporcionados” antes que generar una respuesta plausible pero incorrecta.</p>
+<h2 id="practica"><strong>Práctica</strong><a class="headerlink" href="#practica" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo</strong>:</p>
+<p>Transformar el pipeline en un agente controlado y deliberativo que decide qué pasos ejecutar y en qué orden, integra varios convenios cuando procede, evalúa la suficiencia del contexto antes de responder, se abstiene si no hay base sólida y deja trazabilidad completa. El resultado es un sistema auditado, no un chatbot.</p>
+<p><strong>Implementación del agente en Python</strong></p>
+<p>Construir un script sobre la práctica anterior que orqueste: recepción de la pregunta, selección de convenios, recuperación de contexto por convenio, evaluación de suficiencia, generación o abstención, validación final y registro íntegro del proceso. El modelo decide los pasos, no el resultado.
+Memoria y trazabilidad</p>
+<p>El agente debe conservar historial de preguntas, convenios seleccionados, decisiones de abstención y respuestas finales, registrando cada paso para auditoría, evaluación y depuración. Un tercero debe poder reconstruir el razonamiento completo.</p>
+<p><strong>Reglas estrictas de comportamiento</strong></p>
+<p>No puede responder sin contexto suficiente, mezclar convenios sin declararlo, inferir información ausente ni ocultar incertidumbre. Debe abstenerse cuando corresponda, ser reproducible y mantener decisiones justificables y auditables.</p>
+<p><strong>Casos de prueba mínimos</strong></p>
+<p>Probar escenarios multi-convenio, ambiguos con fallback, imposibles, válidos con respuesta clara y válidos con contexto insuficiente, analizando qué herramientas se ejecutaron y si el agente actuó de forma conservadora o arriesgada.</p>
+<p><strong>Entregables</strong></p>
+<p>Código del agente, logs completos, resultados de pruebas y un breve documento técnico con decisiones de diseño, límites conocidos y errores pendientes.</p>
+<p><strong>Criterio de éxito</strong></p>
+<p>El bloque se supera si el sistema prioriza abstenerse antes que inventar, mantiene trazabilidad clara, actúa como orquestador y produce errores explicables. El foco es fiabilidad, no brillantez.</p>
+<p>Tool 1 · Selección de convenios múltiples. Algunas preguntas afectan a varios convenios, otras son ambiguas o no aplican a ninguno. El sistema debe trabajar en dominio cerrado (solo PDFs existentes), permitir devolver varios convenios o NONE y generar un output estructurado y validable. La clave es decidir cuándo realmente tiene sentido seleccionar más de uno.</p>
+<p>Tool 2 · Recuperación de contexto multi-convenio. Un RAG simple puede mezclar fuentes y sesgar la respuesta hacia un único convenio. Es necesario recuperar contexto por cada convenio, limitar fragmentos por fuente y mantener trazabilidad (PDF y página), equilibrando cantidad de información y ruido.</p>
+<p>Tool 3 · Evaluación de suficiencia. El modelo no distingue bien entre evidencia débil y sólida. Se requiere una métrica explícita, decisión binaria suficiente/insuficiente y capacidad de abortar si no hay base suficiente. El reto es definir qué es “suficiente” en el dominio.</p>
+<p>Tool 4 · Síntesis controlada. El contexto debe entregarse estructurado, con fuentes visibles y preparado para auditoría, evitando mezclas implícitas.</p>
+<p>Tool 5 · Validación final. Para evitar contradicciones o lenguaje inseguro, se necesitan reglas deterministas, posibilidad de invalidar la respuesta y un fallback seguro.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,978 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://manoli-iborra.github.io/NLP/p9.html">
+      
+      
+        <link rel="prev" href="p7.html">
+      
+      
+        <link rel="next" href="p8.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>8. RAG - Procesamiento del Lenguaje Natural</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rag" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-header__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Procesamiento del Lenguaje Natural
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Procesamiento del Lenguaje Natural" class="md-nav__button md-logo" aria-label="Procesamiento del Lenguaje Natural" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Procesamiento del Lenguaje Natural
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Procesamiento del Lenguaje Natural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Librerías para PLN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Análisis de sentimiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PLN con Redes Neuronales 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Transformers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Transfer Learning y Fine Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="p9.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-ingesta-preparando-el-conocimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Ingesta: Preparando el Conocimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-recuperacion-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Recuperación (Retrieval)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-generacion-grounding-y-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Generación: Grounding y Prompting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemas-comunes-y-rag-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas Comunes y RAG Avanzado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Tools y funciones Calling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="p13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Entorno de producción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-ingesta-preparando-el-conocimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Ingesta: Preparando el Conocimiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-recuperacion-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Recuperación (Retrieval)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-pipeline-de-generacion-grounding-y-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Pipeline de Generación: Grounding y Prompting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemas-comunes-y-rag-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas Comunes y RAG Avanzado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rag"><strong>RAG</strong><a class="headerlink" href="#rag" title="Permanent link">&para;</a></h1>
+<p>Los LLMs funcionan como gigantescos repositorios de patrones lingüísticos, pero su conocimiento no es infinito ni siempre actualizado. Podemos distinguir dos tipos de memoria que condicionan lo que saben y cómo responden:</p>
+<ul>
+<li>
+<p>Memoria Paramétrica: Corresponde a todo lo que el modelo aprendió durante el pre-entrenamiento. Está codificada en los pesos de la red neuronal, lo que significa que es estática y solo refleja información disponible hasta una fecha determinada (knowledge cutoff). No puede aprender hechos nuevos sin un reentrenamiento completo o un ajuste fino (fine-tuning).</p>
+</li>
+<li>
+<p>Memoria No Paramétrica: Representa cualquier información externa que se le proporcione al modelo al momento de la consulta. Puede ser un documento, una base de datos, o cualquier fuente actualizada, y permite al modelo acceder a conocimiento más allá de su entrenamiento inicial.</p>
+</li>
+</ul>
+<p>RAG (Generación Aumentada por Recuperación) es la arquitectura que combina estas memorias de manera eficiente. En lugar de depender únicamente de lo que "recuerda" el modelo, RAG permite que consulte una biblioteca de documentos relevantes antes de generar la respuesta. El modelo primero identifica los fragmentos más útiles (retrieval) y luego los utiliza para construir una respuesta contextualizada y precisa (generation).</p>
+<p><strong>Ventajas de RAG frente al Fine-tuning para datos factuales</strong></p>
+<ul>
+<li>
+<p>Actualización inmediata: Si la legislación, una normativa o cualquier dato cambia, basta con actualizar los documentos en la base de datos; no hace falta reentrenar el modelo, lo que ahorra tiempo y recursos.</p>
+</li>
+<li>
+<p>Trazabilidad: Como la respuesta se genera a partir de fuentes concretas, se pueden citar referencias precisas, por ejemplo: "Según el Artículo 14 del PDF X...". Esto aporta transparencia y confianza.</p>
+</li>
+<li>
+<p>Reducción de alucinaciones: Al forzar al modelo a basarse en un contexto externo validado, se minimiza la generación de información inventada o errónea, algo frecuente en modelos que solo usan su memoria paramétrica.</p>
+</li>
+</ul>
+<p>En resumen, RAG convierte a los modelos de lenguaje en sistemas híbridos: mantienen la fluidez y creatividad de los LLMs, pero con la capacidad de acceder a información externa actualizada, confiable y trazable, superando los límites de la memoria paramétrica tradicional.</p>
+<h2 id="el-pipeline-de-ingesta-preparando-el-conocimiento"><strong>El Pipeline de Ingesta: Preparando el Conocimiento</strong><a class="headerlink" href="#el-pipeline-de-ingesta-preparando-el-conocimiento" title="Permanent link">&para;</a></h2>
+<p>Antes de que un sistema RAG pueda responder preguntas de manera precisa, los datos deben prepararse cuidadosamente. La efectividad del modelo depende en gran medida de cómo se procesan, limpian y estructuran los documentos. Se trata de transformar información bruta en un formato que el modelo pueda comprender y consultar de forma eficiente.</p>
+<p><strong>Extracción de Texto</strong></p>
+<p>No todos los documentos son fáciles de procesar. Los PDFs, como los del BOE, presentan desafíos particulares:</p>
+<ul>
+<li>
+<p>Columnas múltiples: El texto puede leerse en un orden distinto al visual, lo que confunde al modelo si no se corrige.</p>
+</li>
+<li>
+<p>Tablas: Contienen información importante, pero difícil de interpretar si se extrae como texto plano.</p>
+</li>
+<li>
+<p>Encabezados y pies de página: Suelen repetirse en cada página y pueden “ensuciar” el contexto si se incluyen tal cual.</p>
+</li>
+<li>
+<p>Metadatos ocultos: Información no visible que puede generar ruido en el procesamiento automático.</p>
+</li>
+</ul>
+<p>La extracción correcta consiste en limpiar el contenido, eliminar redundancias y estructurarlo de forma coherente.</p>
+<p><strong>Estrategias de Chunking (Fragmentación)</strong></p>
+<p>Los LLMs tienen una ventana de contexto limitada, por lo que no se puede enviar un documento completo de cientos de páginas de una sola vez. La solución es dividirlo en chunks o fragmentos manejables:</p>
+<ul>
+<li>
+<p>Fixed-size Chunking: Fragmenta el texto cada X caracteres o palabras. Es rápido, pero puede cortar frases o ideas a la mitad.</p>
+</li>
+<li>
+<p>Recursive Character Chunking: Divide primero por párrafos, luego por frases y finalmente por palabras, preservando la unidad semántica y evitando cortes abruptos.</p>
+</li>
+<li>
+<p>Overlap (Solape): Mantener un pequeño porcentaje del fragmento anterior (10-20%) en el siguiente garantiza que el contexto no se pierda entre los cortes y que las relaciones entre fragmentos se mantengan.</p>
+</li>
+</ul>
+<p>Esta etapa asegura que cada fragmento contenga suficiente información relevante para que el modelo pueda comprenderlo de manera autónoma.</p>
+<p><strong>Embeddings: La Representación Semántica</strong></p>
+<p>Cada chunk se transforma en un vector numérico mediante un modelo de embeddings, como all-MiniLM-L6-v2.</p>
+<p>Estos vectores representan el significado del texto en un espacio semántico, donde frases con ideas similares quedan próximas, aunque no compartan palabras exactas. Por ejemplo, “vacaciones retribuidas” y “descanso pagado” generan embeddings cercanos.</p>
+<p>Gracias a esta representación, el modelo puede recuperar los fragmentos más relevantes de la base de datos según la consulta, incluso si las palabras exactas no coinciden.</p>
+<p>En conjunto, la extracción, fragmentación y vectorización permiten que un sistema RAG funcione de manera rápida, precisa y confiable, sentando las bases para la recuperación y generación de respuestas basadas en documentos reales.</p>
+<h2 id="el-pipeline-de-recuperacion-retrieval"><strong>El Pipeline de Recuperación (Retrieval)</strong><a class="headerlink" href="#el-pipeline-de-recuperacion-retrieval" title="Permanent link">&para;</a></h2>
+<p>Cuando un usuario hace una pregunta, el sistema RAG no busca respuestas al azar, sino que sigue un proceso estructurado de recuperación de información para localizar los fragmentos más relevantes antes de generar la respuesta.
+Proceso de recuperación paso a paso:</p>
+<ul>
+<li>
+<p>Vectorización de la consulta: La pregunta del usuario se transforma en un vector numérico utilizando el mismo modelo de embeddings que se aplicó a los chunks del documento. Esto garantiza que la consulta y los fragmentos estén en el mismo espacio semántico.</p>
+</li>
+<li>
+<p>Búsqueda de similitud (Vector Search): El vector de la pregunta se compara con todos los vectores de la base de datos para identificar los fragmentos más cercanos en significado.</p>
+</li>
+<li>
+<p>Métricas de distancia: Se utilizan métodos matemáticos para determinar la cercanía entre vectores:</p>
+</li>
+<li>
+<p>Distancia Euclídea (L2): Calcula la “distancia física” entre puntos en el espacio vectorial.</p>
+</li>
+<li>
+<p>Similitud de Coseno: Evalúa el ángulo entre vectores, lo que suele ser más efectivo para medir similitud semántica en texto.</p>
+</li>
+<li>
+<p>Top-K: Se seleccionan los K fragmentos más relevantes (generalmente entre 3 y 5), que serán utilizados como contexto para generar la respuesta.</p>
+</li>
+</ul>
+<p><strong>Bases de datos vectoriales e índices</strong></p>
+<p>Cuando la base de datos contiene millones de chunks, comparar la consulta con cada vector sería demasiado lento. Para resolver esto se utilizan bases de datos vectoriales como FAISS (Facebook AI Similarity Search), que implementan estructuras de índices avanzadas:</p>
+<ul>
+<li>
+<p>IVF (Inverted File Index): Agrupa vectores en clústeres, reduciendo la cantidad de comparaciones necesarias.</p>
+</li>
+<li>
+<p>HNSW (Hierarchical Navigable Small World): Crea una red jerárquica de vectores que permite encontrar los más cercanos de manera rápida y eficiente.</p>
+</li>
+</ul>
+<p>Gracias a estas técnicas, la recuperación de información es instantánea y escalable, permitiendo que el modelo acceda al contexto más relevante antes de generar cualquier respuesta.</p>
+<h2 id="el-pipeline-de-generacion-grounding-y-prompting"><strong>El Pipeline de Generación: Grounding y Prompting</strong><a class="headerlink" href="#el-pipeline-de-generacion-grounding-y-prompting" title="Permanent link">&para;</a></h2>
+<p>Una vez recuperados los fragmentos relevantes, el sistema entra en la fase final: la generación de la respuesta. En este punto el LLM no actúa como una base de conocimiento general, sino como un razonador que debe interpretar y sintetizar la información que se le proporciona.</p>
+<p><strong>Construcción del Prompt con Contexto</strong>
+El prompt se diseña para dejar claro que el modelo dispone de una fuente de verdad externa y que su respuesta debe basarse únicamente en ella. No se trata solo de pasarle texto, sino de guiar su comportamiento mediante instrucciones explícitas.</p>
+<p>Un prompt bien estructurado suele definir el rol del modelo, delimitar el contexto y establecer reglas claras de actuación, por ejemplo, indicándole que debe admitir desconocimiento si la respuesta no aparece en los fragmentos recuperados. Esto reduce respuestas creativas innecesarias y refuerza la precisión factual.</p>
+<p><strong>Grounding (Anclaje)</strong>
+El grounding consiste en anclar firmemente al modelo al contexto proporcionado. Un modelo bien anclado entiende que no debe recurrir a su conocimiento general ni completar huecos con suposiciones.</p>
+<p>En la práctica, esto implica que si el contexto trata exclusivamente sobre convenios laborales, el modelo rechazará responder preguntas de cultura general o derecho internacional, aunque “sepa” la respuesta. El objetivo es priorizar fidelidad al contexto frente a fluidez o creatividad.</p>
+<h2 id="problemas-comunes-y-rag-avanzado"><strong>Problemas Comunes y RAG Avanzado</strong><a class="headerlink" href="#problemas-comunes-y-rag-avanzado" title="Permanent link">&para;</a></h2>
+<p>Incluso con una buena ingesta, recuperación y generación, los sistemas RAG no son infalibles. Los fallos suelen concentrarse en tres áreas principales:
+- Fallo en la recuperación: La pregunta del usuario es ambigua o mal formulada y el sistema recupera fragmentos que no contienen la información relevante.
+- Fallo en la generación: La información correcta está presente en el contexto, pero el modelo la ignora, la mezcla o introduce datos inventados.
+- Lost in the Middle: Los LLMs tienden a prestar más atención al inicio y al final del contexto, perdiendo detalles importantes situados en los fragmentos intermedios.</p>
+<p><strong>Técnicas de Mejora (RAG de 2ª Generación)</strong></p>
+<p>Para mitigar estos problemas, se utilizan técnicas más avanzadas que refinan cada etapa del pipeline:
+- Query Expansion: El propio modelo reformula o amplía la pregunta original para mejorar la recuperación, incluyendo sinónimos o términos más específicos.
+- Re-ranking: Se recuperan inicialmente muchos fragmentos con un método rápido y, posteriormente, un segundo modelo más preciso (como un cross-encoder) los reordena para seleccionar solo los más relevantes.
+- Hybrid Search: Combina búsqueda vectorial semántica con búsqueda clásica por palabras clave (BM25). Es especialmente útil cuando se necesitan coincidencias exactas, como números de artículos legales, códigos o nombres propios. </p>
+<h2 id="practica"><strong>Práctica</strong><a class="headerlink" href="#practica" title="Permanent link">&para;</a></h2>
+<p><strong>Paso 1</strong>. Seleccionar los documentos del RAG
+Hemos de crear una carpeta donde guardar los documentos que usaremos para el RAG.
+<strong>Paso 2</strong>. Toma de decisiones sobre parámetros del RAG
+Hay que razonar  para tomar las siguientes decisiones:
+Tamaño de chunk
+Solapamiento de chunks
+Qué ocurre cuando no hay evidencia recuperable
+Cómo se obliga al modelo a citar o abstenerse</p>
+<p>Librerías necesarias:
+json, faiss, torch
+from pypdf import PdfReader
+from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from peft import PeftModel</p>
+<p><strong>Paso 3</strong>. Generar un script de Python para convertir documentos en chunks y guardar el resultado en un .json</p>
+<p>Crear un modelo en un script de Python que use los chunks como base de conocimiento:
+El código ha de usar como base el script creado en la práctica anterior.</p>
+<p>Análisis:
+Analizar los resultados obtenidos con este nuevo modelo comparándolo con los resultados anteriores.
+¿Recupera el chunk correcto pero responde mal?
+¿Responde bien con chunk parcial?
+¿Se apoya demasiado en frases genéricas del BOE?
+¿Hay casos donde el modelo debería decir “no lo sé” y no lo hace?
+Identificar explícitamente:
+Alucinaciones con contexto presente
+Alucinaciones con contexto insuficiente
+Falsos positivos por similitud semántica</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Manuela Iborra - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<m.iborra@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm145.1 235.9-100.7-60.5c-7.7-4.6-12.4-12.9-12.4-21.9 0-14.1 11.4-25.5 25.5-25.5h204.9c14.1 0 25.5 11.4 25.5 25.5 0 9-4.7 17.3-12.4 21.9l-100.6 60.5c-4.5 2.7-9.6 4.1-14.9 4.1s-10.4-1.4-14.9-4.1M352 237.3V320c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-82.7l96.7 58c9.4 5.7 20.3 8.7 31.3 8.7s21.9-3 31.3-8.7z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
